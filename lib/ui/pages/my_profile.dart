@@ -1,11 +1,12 @@
 part of 'pages.dart';
 
-class ProfilePage extends StatefulWidget {
+
+class MyProfilePage extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _MyProfilePageState createState() => _MyProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: GestureDetector(
                   onTap: () {
-                    Get.to(RegistrantPage());
+                    Get.to(MainPage());
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 16),
@@ -58,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
                                 child: Text(
-                                  "See the CV",
+                                  "Logout",
                                   style:
                                       TextStyle(color: Colors.white, fontSize: 16),
                                   textAlign: TextAlign.center,
@@ -66,16 +67,16 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                             onPressed: () {
-                              Get.to(MainPage());
+                              Get.to(SignUpPage());
                             },
-                            color: Color(0xFF1D2A64),
+                            color: Color(0xFFD43F51),
                           ),
                       ),
                     ),
             Column(
             children: [
               SizedBox(height:56),
-              ProfileCard(),
+              MyProfileCard(),
               SizedBox(height: 24,),
               Container(
                         width: MediaQuery.of(context).size.width - (2 * 16),

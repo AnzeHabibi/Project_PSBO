@@ -11,3 +11,4 @@ part 'main_page.dart';
 part 'detail_page.dart';
 part 'registrant_page.dart';
 part 'profile_page.dart';
+part 'my_profile.dart';

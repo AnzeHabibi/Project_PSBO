@@ -7,3 +7,4 @@ part 'my_project_card.dart';
 part 'new_project_card.dart';
 part 'participant_list.dart';
 part 'profile_card.dart';
+part 'my_profile_card.dart';

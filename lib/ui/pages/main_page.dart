@@ -39,24 +39,29 @@ class _MainPageState extends State<MainPage> {
                                       fontWeight: FontWeight.w900)),
                             ],
                           ),
-                          Container(
-                            height: 60,
-                            width: 60,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.blue[100].withOpacity(0.5),
-                                    spreadRadius: 0.5,
-                                    blurRadius: 3,
-                                    offset: Offset(
-                                        0, 2), // changes position of shadow
-                                  ),
-                                ],
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_800_800/0/1608781057747?e=1620864000&v=beta&t=7n3Gd-JXKjKD_pkZ2GERYlNaFCLIGf_URZgVWpaQsoE"),
-                                    fit: BoxFit.cover)),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(MyProfilePage());
+                            },
+                            child: Container(
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.blue[100].withOpacity(0.5),
+                                      spreadRadius: 0.5,
+                                      blurRadius: 3,
+                                      offset: Offset(
+                                          0, 2), // changes position of shadow
+                                    ),
+                                  ],
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_800_800/0/1608781057747?e=1620864000&v=beta&t=7n3Gd-JXKjKD_pkZ2GERYlNaFCLIGf_URZgVWpaQsoE"),
+                                      fit: BoxFit.cover)),
+                            ),
                           )
                         ],
                       ),
@@ -206,7 +211,7 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height:36),
+                    SizedBox(height: 36),
                   ],
                 ),
               )
