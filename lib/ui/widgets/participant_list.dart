@@ -15,8 +15,8 @@ class ParticipantList extends StatelessWidget {
           Row(
             children: [
               Container(
-                height: 55,
-                width: 55,
+                height: 60,
+                width: 60,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     boxShadow: [
@@ -35,12 +35,12 @@ class ParticipantList extends StatelessWidget {
                 children: [
                   Text(
                     participant.nameParticipant,
-                    style: blueFontStyle2.copyWith(fontWeight: FontWeight.w600),
+                    style: blueFontStyle2.copyWith(fontSize:16, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 6),
                   Text(
                     participant.roleParticipant,
-                    style: blueFontStyle3.copyWith(color: greyColor),
+                    style: blueFontStyle3.copyWith(fontSize:12, color: greyColor),
                   )
                 ],
               ),
@@ -48,7 +48,7 @@ class ParticipantList extends StatelessWidget {
           ),
           Container(
             height: 35,
-            width: 115,
+            width: 120,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
             child: RaisedButton(
               onPressed: () {},
@@ -60,7 +60,7 @@ class ParticipantList extends StatelessWidget {
                 style: whiteFontStyle.copyWith(fontSize: 10),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
