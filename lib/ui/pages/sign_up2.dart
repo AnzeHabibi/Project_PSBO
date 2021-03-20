@@ -91,7 +91,7 @@ border: OutlineInputBorder(
                           ),
                         ),
                         onPressed: () {
-                          Get.to(MainPage());
+                          Get.to(OpeningPage());
                         },
                         color: Color(0xFF1D2A64),
                       ),
