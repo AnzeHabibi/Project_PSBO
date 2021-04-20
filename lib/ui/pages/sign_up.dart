@@ -96,23 +96,28 @@ focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDB
                             emailController.text.isEmpty
                                 ? _validateEmail = true
                                 : _validateEmail = false;
-                                passwordController.text.isEmpty
+                            passwordController.text.isEmpty
                                 ? _validatePassword = true
                                 : _validatePassword = false;
-                                nickController.text.isEmpty
+                            nickController.text.isEmpty
                                 ? _validateNick = true
                                 : _validateNick = false;
-                                phoneController.text.isEmpty
+                            phoneController.text.isEmpty
                                 ? _validatePhone = true
                                 : _validatePhone = false;
-                                roleController.text.isEmpty
+                            roleController.text.isEmpty
                                 ? _validateRole = true
                                 : _validateRole = false;
-                                specialistController.text.isEmpty
+                            specialistController.text.isEmpty
                                 ? _validateSpecialist = true
                                 : _validateSpecialist = false;
                           });
-                          if (_validateEmail== false && _validatePassword== false && _validateNick== false && _validatePhone== false && _validateRole== false && _validateSpecialist== false ) {
+                          if (_validateEmail == false &&
+                              _validatePassword == false &&
+                              _validateNick == false &&
+                              _validatePhone == false &&
+                              _validateRole == false &&
+                              _validateSpecialist == false) {
                             Get.to(SignUnPage2());
                           }
                         },
@@ -133,11 +138,16 @@ focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDB
                                 color: Color(0xFF424874),
                                 fontWeight: FontWeight.w400),
                           ),
-                          Text(
-                            "Sign In",
-                            style: TextStyle(
-                                color: Color(0xFF424874),
-                                fontWeight: FontWeight.w700),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(SignInPage);
+                            },
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                  color: Color(0xFF424874),
+                                  fontWeight: FontWeight.w700),
+                            ),
                           )
                         ],
                       ),
@@ -218,7 +228,8 @@ Widget _buildPasswordTF() {
             obscureText: true,
             decoration: InputDecoration(
               fillColor: Colors.white,
-              errorText: _validatePassword ? 'Inputan tidak\'bisa kosong' : null,
+              errorText:
+                  _validatePassword ? 'Inputan tidak\'bisa kosong' : null,
               hintText: "Input Password",
               hintStyle: TextStyle(
                 color: Color(0xFFD2D9DF),
@@ -392,7 +403,8 @@ Widget _buildSpecialistTF() {
             controller: specialistController,
             decoration: InputDecoration(
               fillColor: Colors.white,
-              errorText: _validateSpecialist ? 'Inputan tidak\'bisa kosong' : null,
+              errorText:
+                  _validateSpecialist ? 'Inputan tidak\'bisa kosong' : null,
               hintText: "Input specialist",
               hintStyle: TextStyle(
                 color: Color(0xFFD2D9DF),
