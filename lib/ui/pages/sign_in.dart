@@ -134,11 +134,16 @@ focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDB
                                 color: Color(0xFF424874),
                                 fontWeight: FontWeight.w400),
                           ),
-                          Text(
-                            "Sign In",
-                            style: TextStyle(
-                                color: Color(0xFF424874),
-                                fontWeight: FontWeight.w700),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(SignUpPage);
+                            },
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                  color: Color(0xFF424874),
+                                  fontWeight: FontWeight.w700),
+                            ),
                           )
                         ],
                       ),
