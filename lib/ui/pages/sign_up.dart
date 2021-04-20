@@ -29,21 +29,34 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-//Padding(
-// padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-// child: Text("Email", style: TextStyle(color: Color(0xFF424874), fontWeight: FontWeight.w400),),
-// ),
-/*TextField(
-decoration: InputDecoration(
-
-fillColor:Colors.white,
-hintText: " Example@sample.com",
-hintStyle: TextStyle(color: Color(0xFFD2D9DF), fontSize:14,),
-border: OutlineInputBorder(
-borderRadius: BorderRadius.circular(30,)),
-focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDBD),)),
-),
-),*/
+                          Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  width: 160,
+                                  height: 160,
+                                  margin: EdgeInsets.only(top: 26),
+                                  padding: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/photo_border.png"))),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                "assets/photo.png"),
+                                            fit: BoxFit.cover)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
                           _buildEmailTF(),
                           _buildNickTF(),
                           _buildPasswordTF(),
@@ -138,16 +151,11 @@ focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDB
                                 color: Color(0xFF424874),
                                 fontWeight: FontWeight.w400),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(SignInPage);
-                            },
-                            child: Text(
-                              "Sign In",
-                              style: TextStyle(
-                                  color: Color(0xFF424874),
-                                  fontWeight: FontWeight.w700),
-                            ),
+                          Text(
+                            "Sign In",
+                            style: TextStyle(
+                                color: Color(0xFF424874),
+                                fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
