@@ -115,8 +115,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                                           shape:
                                                               BoxShape.circle,
                                                           image: DecorationImage(
-                                                              image: NetworkImage(
-                                                                  "https://scontent.fcgk6-2.fna.fbcdn.net/v/t1.6435-9/159902851_2023597117781416_8920989103309733742_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeF7JV6Ak-Jk3EtljOwrYnh9GKkqCuNh1agYqSoK42HVqKSLlcOXmFUDFDsgCzTkCaArAqhMNA-HB-wK_Gl65koI&_nc_ohc=mIkys3ijJEIAX9MJKc9&_nc_ht=scontent.fcgk6-2.fna&oh=3135405f013b37c6c73df8bee9546f06&oe=60A079A8"),
+                                                              image: AssetImage(
+                                                                  "assets/photo.png"),
                                                               fit: BoxFit
                                                                   .cover)),
                                                     )))))
