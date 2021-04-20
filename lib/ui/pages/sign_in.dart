@@ -44,8 +44,8 @@ borderRadius: BorderRadius.circular(30,)),
 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDBD),)),
 ),
 ),*/
-                          _buildEmailTFL(),
-                          _buildPasswordTFL(),
+                          _buildEmailTF(),
+                          _buildPasswordTF(),
 // Padding(
 // padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
 // child: Text("Password", style: TextStyle(color: Color(0xFF424874), fontWeight: FontWeight.w400),),
@@ -95,25 +95,9 @@ focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDB
                             passwordController.text.isEmpty
                                 ? _validatePassword = true
                                 : _validatePassword = false;
-                            nickController.text.isEmpty
-                                ? _validateNick = true
-                                : _validateNick = false;
-                            phoneController.text.isEmpty
-                                ? _validatePhone = true
-                                : _validatePhone = false;
-                            roleController.text.isEmpty
-                                ? _validateRole = true
-                                : _validateRole = false;
-                            specialistController.text.isEmpty
-                                ? _validateSpecialist = true
-                                : _validateSpecialist = false;
                           });
                           if (_validateEmail == false &&
-                              _validatePassword == false &&
-                              _validateNick == false &&
-                              _validatePhone == false &&
-                              _validateRole == false &&
-                              _validateSpecialist == false) {
+                              _validatePassword == false) {
                             Get.to(SignUnPage2());
                           }
                         },
@@ -157,93 +141,4 @@ focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDB
       ),
     );
   }
-}
-
-Widget _buildEmailTFL() {
-  return Container(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 0, 12),
-          child: Text("Email", style: blueFontStyle2),
-        ),
-        Container(
-          height: 45.0,
-          child: TextField(
-            controller: emailController,
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              errorText: _validateEmail ? 'Inputan tidak\'bisa kosong' : null,
-              hintText: "Input Email",
-              hintStyle: TextStyle(
-                color: Color(0xFFD2D9DF),
-                fontSize: 12,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xffD2D9DF), width: 1.5),
-                borderRadius: const BorderRadius.all(
-                  const Radius.circular(30.0),
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xffD2D9DF), width: 1.5),
-                borderRadius: const BorderRadius.all(
-                  const Radius.circular(30.0),
-                ),
-              ),
-            ),
-          ),
-        )
-      ],
-    ),
-  );
-}
-
-Widget _buildPasswordTFL() {
-  return Container(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 0, 12),
-          child: Text("Password", style: blueFontStyle2),
-        ),
-        Container(
-          height: 45.0,
-          child: TextField(
-            controller: passwordController,
-            obscureText: true,
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              errorText:
-                  _validatePassword ? 'Inputan tidak\'bisa kosong' : null,
-              hintText: "Input Password",
-              hintStyle: TextStyle(
-                color: Color(0xFFD2D9DF),
-                fontSize: 12,
-              ),
-              suffixIcon: Icon(
-                Icons.remove_red_eye,
-                color: mainColor,
-                size: 20,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xffD2D9DF), width: 1.5),
-                borderRadius: const BorderRadius.all(
-                  const Radius.circular(30.0),
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Color(0xffD2D9DF), width: 1.5),
-                borderRadius: const BorderRadius.all(
-                  const Radius.circular(30.0),
-                ),
-              ),
-            ),
-          ),
-        )
-      ],
-    ),
-  );
 }
