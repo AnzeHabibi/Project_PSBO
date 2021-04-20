@@ -6,6 +6,56 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  File _image;
+
+  _imgFromCamera() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.camera, imageQuality: 50);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: Container(
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text('Photo Library'),
+                      onTap: () {
+                        _imgFromGallery();
+                        Navigator.of(context).pop();
+                      }),
+                  new ListTile(
+                    leading: new Icon(Icons.photo_camera),
+                    title: new Text('Camera'),
+                    onTap: () {
+                      _imgFromCamera();
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  _imgFromGallery() async {
+    File image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 50);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -32,26 +82,44 @@ class _SignUpPageState extends State<SignUpPage> {
                           Column(
                             children: [
                               Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  width: 160,
-                                  height: 160,
-                                  margin: EdgeInsets.only(top: 26),
-                                  padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/photo_border.png"))),
+                                  alignment: Alignment.center,
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/photo.png"),
-                                            fit: BoxFit.cover)),
-                                  ),
-                                ),
-                              ),
+                                      width: 160,
+                                      height: 160,
+                                      margin: EdgeInsets.only(top: 26),
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/photo_border.png"))),
+                                      child: GestureDetector(
+                                          onTap: () {
+                                            _showPicker(context);
+                                          },
+                                          child: CircleAvatar(
+                                              radius: 55,
+                                              child: _image != null
+                                                  ? ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100),
+                                                      child: Image.file(
+                                                        _image,
+                                                        width: 140,
+                                                        height: 140,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    )
+                                                  : Container(
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          image: DecorationImage(
+                                                              image: NetworkImage(
+                                                                  "https://scontent.fcgk6-2.fna.fbcdn.net/v/t1.6435-9/159902851_2023597117781416_8920989103309733742_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=09cbfe&_nc_eui2=AeF7JV6Ak-Jk3EtljOwrYnh9GKkqCuNh1agYqSoK42HVqKSLlcOXmFUDFDsgCzTkCaArAqhMNA-HB-wK_Gl65koI&_nc_ohc=mIkys3ijJEIAX9MJKc9&_nc_ht=scontent.fcgk6-2.fna&oh=3135405f013b37c6c73df8bee9546f06&oe=60A079A8"),
+                                                              fit: BoxFit
+                                                                  .cover)),
+                                                    )))))
                             ],
                           ),
                           SizedBox(
@@ -139,7 +207,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(SignInPage());
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Row(
