@@ -1,9 +1,9 @@
 part of 'widget.dart';
 
-class MyProjectCard extends StatelessWidget {
-  final MyProject myProject;
+class PendingProjectCard extends StatelessWidget {
+  final PendingProject pendingProject;
 
-  MyProjectCard(this.myProject);
+  PendingProjectCard(this.pendingProject);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class MyProjectCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   image: DecorationImage(
                       image: NetworkImage(
-                        myProject.photoCreator,
+                        pendingProject.photoCreator,
                       ),
                       fit: BoxFit.cover)),
             ),
@@ -35,7 +35,7 @@ class MyProjectCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
             child: Text(
-              myProject.name,
+              pendingProject.name,
               style: blueFontStyle2.copyWith(fontSize: 16),
             ),
           ),
@@ -43,11 +43,11 @@ class MyProjectCard extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
             child: Row(
               children: [
-                Text(myProject.start,
+                Text(pendingProject.start,
                     style: blueFontStyle3.copyWith(color: Color(0xffD43F51))),
                 SizedBox(width: 2),
                 Text(
-                  myProject.date,
+                  pendingProject.date,
                   style: blueFontStyle3.copyWith(color: greyColor),
                 )
               ],

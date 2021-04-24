@@ -73,39 +73,29 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                    child: Container(
-                      height: 160,
+                  Container(
+                      height: 188,
                       width: double.infinity,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          Row(
-                            children: [
-                              MyProjectCard(),
-                              SizedBox(
-                                width: 16,
-                              ),
-                              MyProjectCard(),
-                              SizedBox(
-                                width: 16,
-                              ),
-                              MyProjectCard(),
-                              SizedBox(
-                                width: 16,
-                              ),
-                              MyProjectCard(),
-                              SizedBox(
-                                width: 16,
-                              ),
-                            ],
+                          GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              children: mockMyProject
+                                  .map((e) => Padding(
+                                        padding: EdgeInsets.only(
+                                            left: (e == mockMyProject.first)
+                                                ? 16
+                                                : 0,
+                                            right: 16),
+                                        child: MyProjectCard(e),
+                                      ))
+                                  .toList(),
+                            ),
                           )
                         ],
-                      ),
-                    ),
-                  ),
+                      )),
                   SizedBox(
                     height: 24,
                   ),

@@ -89,26 +89,29 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                      child: Container(
-                        height: 160,
+                    Container(
+                        height: 188,
                         width: double.infinity,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Row(
-                              children: [
-                                MyProjectCard(),
-                                SizedBox(
-                                  width: 24,
-                                ),
-                              ],
+                            GestureDetector(
+                              onTap: () {},
+                              child: Row(
+                                children: mockMyProject
+                                    .map((e) => Padding(
+                                          padding: EdgeInsets.only(
+                                              left: (e == mockMyProject.first)
+                                                  ? 16
+                                                  : 0,
+                                              right: 16),
+                                          child: MyProjectCard(e),
+                                        ))
+                                    .toList(),
+                              ),
                             )
                           ],
-                        ),
-                      ),
-                    ),
+                        )),
                     SizedBox(height: 24),
                     Container(
                       width: MediaQuery.of(context).size.width - (2 * 16),
@@ -178,39 +181,30 @@ class _MainPageState extends State<MainPage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                      child: Container(
-                        height: 160,
+                    Container(
+                        height: 188,
                         width: double.infinity,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
-                            Row(
-                              children: [
-                                MyProjectCard(),
-                                SizedBox(
-                                  width: 16,
-                                ),
-                                MyProjectCard(),
-                                SizedBox(
-                                  width: 16,
-                                ),
-                                MyProjectCard(),
-                                SizedBox(
-                                  width: 16,
-                                ),
-                                MyProjectCard(),
-                                SizedBox(
-                                  width: 16,
-                                ),
-                              ],
+                            GestureDetector(
+                              onTap: () {},
+                              child: Row(
+                                children: mockPendingProject
+                                    .map((e) => Padding(
+                                          padding: EdgeInsets.only(
+                                              left: (e ==
+                                                      mockPendingProject.first)
+                                                  ? 16
+                                                  : 0,
+                                              right: 16),
+                                          child: PendingProjectCard(e),
+                                        ))
+                                    .toList(),
+                              ),
                             )
                           ],
-                        ),
-                      ),
-                    ),
+                        )),
                     SizedBox(height: 36),
                   ],
                 ),
