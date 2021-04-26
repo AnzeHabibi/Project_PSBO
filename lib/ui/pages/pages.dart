@@ -17,3 +17,6 @@ part 'registrant_page.dart';
 part 'profile_page.dart';
 part 'my_profile.dart';
 part 'opening.dart';
+part 'new_project_page.dart';
+part 'my_project_page.dart';
+part 'pending_project_page.dart';

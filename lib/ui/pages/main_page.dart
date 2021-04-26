@@ -78,12 +78,17 @@ class _MainPageState extends State<MainPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                   color: mainColor)),
-                          Text(
-                            "see all",
-                            style: blueFontStyle2.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w200,
-                                color: mainColor),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(MyProjectPage());
+                            },
+                            child: Text(
+                              "see all",
+                              style: blueFontStyle2.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w200,
+                                  color: mainColor),
+                            ),
                           ),
                         ],
                       ),
@@ -124,12 +129,17 @@ class _MainPageState extends State<MainPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                   color: mainColor)),
-                          Text(
-                            "see all",
-                            style: blueFontStyle2.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w200,
-                                color: mainColor),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(NewProjectPage());
+                            },
+                            child: Text(
+                              "see all",
+                              style: blueFontStyle2.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w200,
+                                  color: mainColor),
+                            ),
                           ),
                         ],
                       ),
@@ -171,12 +181,17 @@ class _MainPageState extends State<MainPage> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                   color: mainColor)),
-                          Text(
-                            "see all",
-                            style: blueFontStyle2.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w200,
-                                color: mainColor),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(PendingProjectPage());
+                            },
+                            child: Text(
+                              "see all",
+                              style: blueFontStyle2.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w200,
+                                  color: mainColor),
+                            ),
                           ),
                         ],
                       ),

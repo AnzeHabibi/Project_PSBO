@@ -9,7 +9,6 @@ class NewProject {
   final String date;
   final String nameCreator;
   final String photoCreator;
-  
 
   NewProject(
       {this.id,
@@ -39,12 +38,11 @@ List<NewProject> mockProject = [
       description: "Desain untuk lomba di codig 2.0",
       start: "Start",
       date: "Nov 22, 2021"),
-
-      NewProject(
+  NewProject(
       id: 3,
       picturePath:
           "https://images.unsplash.com/photo-1545296664-39db56ad95bd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=690&q=80",
-      name: "Membuat mockup menggunakan software Figma",
+      name: "Membuat mockup menggunakan Figma",
       description: "Desain untuk lomba di codig 2.0",
       start: "Start",
       date: "Nov 22, 2021"),
@@ -52,7 +50,7 @@ List<NewProject> mockProject = [
       id: 4,
       picturePath:
           "https://images.unsplash.com/photo-1520509414578-d9cbf09933a1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=349&q=80",
-      name: "Memulai membuat program dengan bahasa Python",
+      name: "Memulai membuat program dengan Python",
       description: "Desain untuk lomba di codig 2.0",
       start: "Start",
       date: "Nov 22, 2021")
