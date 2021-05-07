@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:project_psbo/controller/signInController.dart';
+import 'package:project_psbo/main.dart';
 import 'package:project_psbo/model/model.dart';
 import 'package:project_psbo/shared/shared.dart';
 import 'package:project_psbo/ui/widgets/widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:intl/intl.dart';
 
 part 'sign_up.dart';
 part 'sign_in.dart';
@@ -20,3 +22,4 @@ part 'opening.dart';
 part 'new_project_page.dart';
 part 'my_project_page.dart';
 part 'pending_project_page.dart';
+part 'upload_post.dart';

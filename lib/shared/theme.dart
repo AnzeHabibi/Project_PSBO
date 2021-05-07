@@ -19,3 +19,5 @@ TextStyle blueFontStyle3 = GoogleFonts.lato()
     .copyWith(color: mainColor, fontSize: 12, fontWeight: FontWeight.w400);
 TextStyle whiteFontStyle = GoogleFonts.lato()
     .copyWith(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400);
+TextStyle blueFontStyle4 = GoogleFonts.lato()
+    .copyWith(color: mainColor, fontSize: 24, fontWeight: FontWeight.w400);

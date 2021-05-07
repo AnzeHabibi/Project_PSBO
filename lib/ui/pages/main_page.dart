@@ -232,7 +232,7 @@ class _MainPageState extends State<MainPage> {
         child: Icon(Icons.add),
         backgroundColor: mainColor,
         onPressed: () {
-          Get.to(DetailPage());
+          Get.to(UploadPost());
         },
       ),
     );
