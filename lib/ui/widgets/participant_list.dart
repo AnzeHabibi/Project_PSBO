@@ -27,7 +27,8 @@ class ParticipantList extends StatelessWidget {
                     ],
                     border: Border.all(color: Colors.white, width: 2),
                     image: DecorationImage(
-                        image: NetworkImage(participant.photoParticipant), fit: BoxFit.cover)),
+                        image: NetworkImage(participant.photoParticipant),
+                        fit: BoxFit.cover)),
               ),
               SizedBox(width: 12),
               Column(
@@ -35,12 +36,14 @@ class ParticipantList extends StatelessWidget {
                 children: [
                   Text(
                     participant.nameParticipant,
-                    style: blueFontStyle2.copyWith(fontSize:16, fontWeight: FontWeight.w600),
+                    style: blueFontStyle2.copyWith(
+                        fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 6),
                   Text(
                     participant.roleParticipant,
-                    style: blueFontStyle3.copyWith(fontSize:12, color: greyColor),
+                    style:
+                        blueFontStyle3.copyWith(fontSize: 12, color: greyColor),
                   )
                 ],
               ),
@@ -51,7 +54,17 @@ class ParticipantList extends StatelessWidget {
             width: 120,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => CustomDialog(
+                          name: participant.nameParticipant,
+                          email: participant.emailParticipant,
+                          role: participant.roleParticipant,
+                          specialist: participant.specialistParticipant,
+                          photo: participant.photoParticipant,
+                        ));
+              },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(18))),
               color: Color(0xff236AFF),
@@ -64,5 +77,36 @@ class ParticipantList extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class CustomDialog extends StatelessWidget {
+  final String name, email, role, specialist, photo;
+
+  CustomDialog({this.name, this.email, this.role, this.specialist, this.photo});
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: dialogContent(context),
+    );
+  }
+
+  dialogContent(BuildContext context) {
+    return Stack(children: <Widget>[
+      Container(
+          padding: EdgeInsets.only(top: 100, bottom: 16, left: 16, right: 16),
+          margin: EdgeInsets.only(top: 16),
+          child: RegistrantCard(
+            name: this.name,
+            email: this.email,
+            role: this.role,
+            specialist: this.specialist,
+            photo: this.photo,
+          ))
+    ]);
   }
 }
