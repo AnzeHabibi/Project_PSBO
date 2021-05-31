@@ -90,4 +90,4 @@ https://github.com/AnzeHabibi/Project_PSBO
 |2.|**Muhammad Fauzan Ramadhan** (G64180117)|Project Manager|
 |3.|**Reza Achmad Naufal** (G64180078)|Backend Developer|
 |4.|**Mohammad Thareeq Izzulhaq** (G64180041)|Backend Developer|
-|5.|**Muhammad Hafiduddin** (G64180017)|Frontend|
+|5.|**Muhammad Hafiduddin** (G64180017)|Frontend Developer|
