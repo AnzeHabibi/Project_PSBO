@@ -1,9 +1,9 @@
 
 
 # Project_PSBO
-Nama Sistem : Gofind
-Paralel Praktkum : P1
-Nomor Kelompok : 03
+Nama Sistem : Gofind<br />
+Paralel Praktkum : P1<br />
+Nomor Kelompok : 03<br />
 
 ## User Analysis
 1. Sebagai Mahasiswa IPB yang sedang mencari rekan untuk mengikuti lomba/projek, saya ingin menemukan partner yang sesuai dengan keahlian yang saya butuhkan untuk membantu saya dalam mengerjakan proyek.
