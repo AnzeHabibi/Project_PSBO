@@ -26,8 +26,13 @@ Aplikasi **GoFind** adalah aplikasi yang berbasis Mobile yang dibuat menggunakan
 ## Hasil dan pembahasan
 
 ### Use case diagram
+![enter image description here](https://scontent-sin6-1.xx.fbcdn.net/v/t1.15752-9/191845945_330797081789630_7553886628273252850_n.png?_nc_cat=100&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeFYVBX7Wf3vhP_od_ASF4sDn73iietiwc6fveKJ62LBzrZ7kvvtGbISgswz4-y8yIS6UBDYRZbOLgROC3HWKK8i&_nc_ohc=ZenPvjD4FlsAX-AoxYS&_nc_ht=scontent-sin6-1.xx&oh=8cb805c13f32d9f90f36168f757855a9&oe=60D9B65B)
 ### Activity diagram
+![enter image description here](https://scontent-sin6-1.xx.fbcdn.net/v/t1.15752-9/191771040_165196392231468_6306552687355517317_n.png?_nc_cat=101&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeFxPFSVLdFh6Yb4CMCa0Uku7Lvx6QaX-irsu_HpBpf6KnV8L_9bOCYz-ApLglTJPlYC7eDm4De2Gmj0t303M_GM&_nc_ohc=zvt8I284Cd4AX-tr5T1&tn=xAo5jjmYoiaU7dPL&_nc_ht=scontent-sin6-1.xx&oh=6e073fcb7c73c4aafe95f0a774b188b4&oe=60DACACA)
+![enter image description here](https://scontent-sin6-1.xx.fbcdn.net/v/t1.15752-9/191768009_384165572970675_1360656015580899056_n.png?_nc_cat=100&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeHqVJWEqKOBYHvhNXXu1w9rTR-lEaIYPM9NH6URohg8zxyu6Xn1MNxdDmbMu4KUIdImIzn_w_tzam1aYopKTn0A&_nc_ohc=GSz2xmmlaOMAX9zOr0o&_nc_ht=scontent-sin6-1.xx&oh=1f62cf4fda52935127020200f128fd07&oe=60DB875D)
+![enter image description here](https://scontent-sin6-1.xx.fbcdn.net/v/t1.15752-9/190984691_771870333522544_2577144138558800129_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeH7DO2i9dTRmzhbwuQoZFaL3930kDQtmH3f3fSQNC2YfVhE4TXbgjMhSnPFuwqxPUZJFQB4Eo1BHoD2A5I-yDNm&_nc_ohc=YXOboZmedFQAX8IbPJ8&_nc_ht=scontent-sin6-1.xx&oh=159096a4fbe0652cdb32bb1ab5d4874b&oe=60DA3AEA)
 ### Class diagram
+![enter image description here](https://scontent-sin6-1.xx.fbcdn.net/v/t1.15752-9/191351829_144046597718112_8409705003102667686_n.png?_nc_cat=100&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeHOWFQO9nhi7AI_zn0V83Yqu0GVJTWEQkC7QZUlNYRCQO92TK1nAzWfeQPrZOkpZu9XhI1FffQwzslYO8Wg_jwo&_nc_ohc=qrK1M6EpCXQAX__BAcN&_nc_ht=scontent-sin6-1.xx&oh=024045a485279932aca5c0fa87c04053&oe=60D9FA80)
 ### Entity Relationship Diagram
 ### Arsitektur sistem
 ### Fungsi utama yang dikembangkan
