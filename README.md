@@ -1,3 +1,4 @@
+
 # Project_PSBO
 Nama Sistem : Gofind
 Paralel Praktkum : P1
@@ -9,6 +10,12 @@ Nomor Kelompok : 03
 
 ## Spesifikasi teknis lingkungan pengembangan
 ### Software
+### Hardware
+Aplikasi **GoFind** adalah aplikasi yang berbasis Mobile yang dibuat menggunakan framework Flutter yang adalah SDK (_Software Development Kit_) yang dikembangkan oleh Google untuk membuat aplikasi yang bagus dan bisa berjalan pada berbagai platform. Backend untuk aplikasi ini menggunakan MongoDB, Express, ODM Mongoose, dan Thunder Client untuk aplikasi ini.
+
+**Framework Frontend** : Flutter SDK
+**Framework Backend** : MongoDB, Express, ODM Mongoose, dan Thunder Client
+**Output** : Mobile Application
 
 ## Konsep OOP yang digunakan
 
