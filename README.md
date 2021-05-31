@@ -11,12 +11,12 @@ Nomor Kelompok : 03
 ## Spesifikasi teknis lingkungan pengembangan
 ### Software
 ### Hardware
+### TechStack
 Aplikasi **GoFind** adalah aplikasi yang berbasis Mobile yang dibuat menggunakan framework Flutter yang adalah SDK (_Software Development Kit_) yang dikembangkan oleh Google untuk membuat aplikasi yang bagus dan bisa berjalan pada berbagai platform. Backend untuk aplikasi ini menggunakan MongoDB, Express, ODM Mongoose, dan Thunder Client untuk aplikasi ini.
 
-**Framework Frontend** : Flutter SDK
-**Framework Backend** : MongoDB, Express, ODM Mongoose, dan Thunder Client
-**Output** : Mobile Application
-
+**Framework Frontend** : Flutter SDK<br />
+**Framework Backend** : MongoDB, Express, ODM Mongoose, dan Thunder Client<br />
+**Output** : Mobile Application<br />
 ## Konsep OOP yang digunakan
 
 ## Tipe desain pengembangan yang digunakan (Pattern/Anti Pattern)
