@@ -1,16 +1,33 @@
-# project_psbo
+# Project_PSBO
+Nama Sistem : Gofind
+Paralel Praktkum : P1
+Nomor Kelompok : 03
 
-A new Flutter project.
+## User Analysis
+1. Sebagai Mahasiswa IPB yang sedang mencari rekan untuk mengikuti lomba/projek, saya ingin menemukan partner yang sesuai dengan keahlian yang saya butuhkan untuk membantu saya dalam mengerjakan proyek.
+2. Sebagai Mahasiswa IPB yang memiliki keahlian yang ingin disalurkan, saya ingin menemukan lomba atau projek nyata yang cocok dengan keahlian yang saya miliki saat ini.
 
-## Getting Started
+## Spesifikasi teknis lingkungan pengembangan
+### Software
 
-This project is a starting point for a Flutter application.
+## Konsep OOP yang digunakan
 
-A few resources to get you started if this is your first Flutter project:
+## Tipe desain pengembangan yang digunakan (Pattern/Anti Pattern)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Hasil dan pembahasan
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Use case diagram
+### Activity diagram
+### Class diagram
+### Entity Relationship Diagram
+### Arsitektur sistem
+### Fungsi utama yang dikembangkan
+### Fungsi CRUD
+
+## Hasil implementasi
+### Screenshot sistem
+### Link aplikasi (jika sudah di deploy)
+
+## Saran untuk pengembangan selanjutnya
+
+## Developer dan job desc
