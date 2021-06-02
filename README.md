@@ -3,6 +3,9 @@ Nama Sistem : Gofind<br />
 Paralel Praktkum : P1<br />
 Nomor Kelompok : 03<br />
 
+# Deskripsi Aplikasi 
+Kami ingin membuat ide atau solusi yang dimana user bisa memperlihatkan track record serta keahlian yang mereka miliki untuk bisa ikut dalam sebuah proyek nyata. User bisa memasukan social media dan cv yang berupa link sehingga user lain bisa langsung melihat social media dan cv nya secara langsung. User juga bisa membuat projek dengan memasukan deskripsi, start-deadline serta photo untuk memperlihatkan informasi lengkap proyek yang ingin diikuti. User juga bisa memilih orang yang sesuai dengan kriteria yang user inginkan dengan cara melihat role, specialist, social media, cv serta track record dari proyek apa saja yang diikuti. User yang ingin membuat proyek atau mengikuti proyek tidak dibatasi dengan jurusan atau departemen tertentu, user bisa membuat atau mengikuti proyek apapun tanpa terpaku dengan jurusan atau departemen tertentu. Namun user hanya dapat berada dalam satu projek dalam satu waktu. Dengan adanya solusi tersebut, diharapkan user dapat meningkatkan kualitas kemampuannya dan memperbanyak pengalaman mereka.
+
 ## User Analysis
 ### User Story
 1. Sebagai Mahasiswa IPB yang sedang mencari rekan untuk mengikuti lomba/projek, saya ingin menemukan partner yang sesuai dengan keahlian yang saya butuhkan untuk membantu saya dalam mengerjakan proyek.
@@ -82,13 +85,14 @@ Sistem perangkat lunak yang sudah diintegrasikan kepada user, tentunya akan meng
 ### Screenshot sistem
 ### Link aplikasi
 https://github.com/AnzeHabibi/Project_PSBO
-## Saran untuk pengembangan selanjutnya
 
+## Saran untuk pengembangan selanjutnya
+Akan dilakukan maintenance dari sistem yang telah dibuat dan akan dievaluasi apakah sistem sudah berjalan sesuai kebutuhan pengguna atau belum. Jika belum akan tingkatkan lagi bagian yang kuran, namun jika sudah akan dibuat fitur baru yang sekiranya bisa menambah kinerja sistem tersebut. 
 ## Developer dan job desc
 |No.|Nama|Jobdesk|
 |--|--|--|
 |1.|**Muhammad Abiyyu Habibi** (G64180066)|Frontend Developer and UI/UX Designer|
-|2.|**Muhammad Fauzan Ramadhan** (G64180117)|Project Manager|
+|2.|**Muhammad Fauzan Ramadhan** (G64180117)|Project Manager dan Frontend Developer|
 |3.|**Reza Achmad Naufal** (G64180078)|Backend Developer|
 |4.|**Mohammad Thareeq Izzulhaq** (G64180041)|Backend Developer|
 |5.|**Muhammad Hafiduddin** (G64180017)|Frontend Developer|
