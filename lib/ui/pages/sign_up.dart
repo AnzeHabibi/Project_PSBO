@@ -129,7 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           _buildNickTF(),
                           _buildPasswordTF(),
                           _buildPhoneTF(),
-                          _buildRoleTF(),
+                          // _buildRoleTF(),
                           _buildSpecialistTF(),
 // Padding(
 // padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
@@ -186,9 +186,9 @@ class _SignUpPageState extends State<SignUpPage> {
                             phoneController.text.isEmpty
                                 ? _validatePhone = true
                                 : _validatePhone = false;
-                            roleController.text.isEmpty
-                                ? _validateRole = true
-                                : _validateRole = false;
+                            // roleController.text.isEmpty
+                            //     ? _validateRole = true
+                            //     : _validateRole = false;
                             specialistController.text.isEmpty
                                 ? _validateSpecialist = true
                                 : _validateSpecialist = false;
@@ -197,9 +197,19 @@ class _SignUpPageState extends State<SignUpPage> {
                               _validatePassword == false &&
                               _validateNick == false &&
                               _validatePhone == false &&
-                              _validateRole == false &&
+                              // _validateRole == false &&
                               _validateSpecialist == false) {
-                            Get.to(SignUnPage2());
+                            // Get.to(SignUnPage2());
+                            var route = new MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    new SignUnPage2(
+                                        email: emailController.text,
+                                        name: nickController.text,
+                                        password: passwordController.text,
+                                        phone: phoneController.text,
+                                        specialist: specialistController.text,
+                                        photo: _image));
+                            Navigator.of(context).push(route);
                           }
                         },
                         color: Color(0xFF1D2A64),

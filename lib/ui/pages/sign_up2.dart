@@ -1,40 +1,61 @@
 part of 'pages.dart';
 
 class SignUnPage2 extends StatefulWidget {
+  final String email;
+  final String name;
+  final String password;
+  final String phone;
+  final String specialist;
+  final File photo;
+
+  const SignUnPage2(
+      {Key key,
+      this.email,
+      this.name,
+      this.password,
+      this.phone,
+      this.specialist,
+      this.photo})
+      : super(key: key);
   @override
   _SignUnPage2State createState() => _SignUnPage2State();
 }
 
-class _SignUnPage2State extends State<SignUnPage2> {
+class _SignUnPage2State extends SignUpController {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color(0xFFFBFBFB),
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.fromLTRB(16, 48, 16, 0),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Text("Sign Up 2", style: blueFontStyle1),
-                  ),
-                  Text("Mari mencari rekan kerja yang sesuai dengan projekmu",
-                      style: blackFontStyle2),
-                  Container(
-                      margin: EdgeInsets.only(top: 24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          //  Padding(
-                          //padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-                          //child: Text("Email", style: TextStyle(color: Color(0xFF424874), fontWeight: FontWeight.w400),),
-                          // ),
-                          /*TextField(
+    return isLoading()
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : MaterialApp(
+            home: Scaffold(
+              backgroundColor: Color(0xFFFBFBFB),
+              body: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(16, 48, 16, 0),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Text("Sign Up 2", style: blueFontStyle1),
+                        ),
+                        Text(
+                            "Mari mencari rekan kerja yang sesuai dengan projekmu",
+                            style: blackFontStyle2),
+                        Container(
+                            margin: EdgeInsets.only(top: 24),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                //  Padding(
+                                //padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                                //child: Text("Email", style: TextStyle(color: Color(0xFF424874), fontWeight: FontWeight.w400),),
+                                // ),
+                                /*TextField(
  decoration: InputDecoration(
 
 fillColor:Colors.white,
@@ -45,85 +66,98 @@ border: OutlineInputBorder(
   focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDBD),)),
  ),
   ),*/
-                          _buildLinkedinTF(),
-                          _buildWATF(),
-                          _buildInstagramTF(),
-                          _buildCVTF(),
-                          // Padding(
-                          //padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                          //child: Text("Password", style: TextStyle(color: Color(0xFF424874), fontWeight: FontWeight.w400),),
-                          // ),
-                          // TextField(
-                          //obscureText: true,
-                          //decoration: InputDecoration(
+                                _buildLinkedinTF(),
+                                _buildWATF(),
+                                _buildInstagramTF(),
+                                _buildCVTF(),
+                                // Padding(
+                                //padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                                //child: Text("Password", style: TextStyle(color: Color(0xFF424874), fontWeight: FontWeight.w400),),
+                                // ),
+                                // TextField(
+                                //obscureText: true,
+                                //decoration: InputDecoration(
 
-                          //  fillColor:Colors.white,
-                          //  suffixIcon :Icon(Icons.remove_red_eye, color: Colors.grey) ,
-                          //  labelText: "Input Password",
-                          //  labelStyle: TextStyle(color: Color(0xFFBDBDBD), fontSize:14),
-                          //  border: OutlineInputBorder(
-                          // borderRadius: BorderRadius.circular(30,)),
-                          // focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDBD),),
-                          // ),
-                          //),
-                          // ),
-                        ],
-                      )),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 32, 0, 0),
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
-                        child: Container(
-                          width: 400,
-                          height: 45,
+                                //  fillColor:Colors.white,
+                                //  suffixIcon :Icon(Icons.remove_red_eye, color: Colors.grey) ,
+                                //  labelText: "Input Password",
+                                //  labelStyle: TextStyle(color: Color(0xFFBDBDBD), fontSize:14),
+                                //  border: OutlineInputBorder(
+                                // borderRadius: BorderRadius.circular(30,)),
+                                // focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color:Color(0xFFBDBDBD),),
+                                // ),
+                                //),
+                                // ),
+                              ],
+                            )),
+                        Align(
+                          alignment: Alignment.bottomCenter,
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
-                            child: Text(
-                              "Selesai",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
-                              textAlign: TextAlign.center,
+                            padding: const EdgeInsets.fromLTRB(0, 32, 0, 0),
+                            child: RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30))),
+                              child: Container(
+                                width: 400,
+                                height: 45,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 12, 0, 0),
+                                  child: Text(
+                                    "Selesai",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 16),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  isLoadingTrue();
+                                });
+                                signUp(
+                                    widget.email,
+                                    widget.name,
+                                    widget.password,
+                                    widget.phone,
+                                    widget.specialist,
+                                    widget.photo,
+                                    linkedinController.text,
+                                    waController.text,
+                                    instagramController.text);
+                              },
+                              color: Color(0xFF1D2A64),
                             ),
                           ),
                         ),
-                        onPressed: () {
-                          Get.to(OpeningPage());
-                        },
-                        color: Color(0xFF1D2A64),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(24.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          "Have an account ? ",
-                          style: TextStyle(
-                              color: Color(0xFF424874),
-                              fontWeight: FontWeight.w400),
-                        ),
-                        Text(
-                          "Sign In",
-                          style: TextStyle(
-                              color: Color(0xFF424874),
-                              fontWeight: FontWeight.w700),
+                        Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "Have an account ? ",
+                                style: TextStyle(
+                                    color: Color(0xFF424874),
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                "Sign In",
+                                style: TextStyle(
+                                    color: Color(0xFF424874),
+                                    fontWeight: FontWeight.w700),
+                              )
+                            ],
+                          ),
                         )
                       ],
                     ),
-                  )
-                ],
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
 }
 

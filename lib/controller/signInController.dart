@@ -26,9 +26,10 @@ abstract class LoginController extends State<SignInPage> {
     };
     var jsonData;
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var response = await http
-        .post("https://mamen-lancer.herokuapp.com/api/user/login", body: data);
-    if (response.statusCode == 200) {
+    try {
+      var response = await http.post(
+          "https://mamen-lancer.herokuapp.com/api/user/login",
+          body: data);
       jsonData = json.decode(response.body);
       print(jsonData.toString());
       setState(() {
@@ -41,11 +42,11 @@ abstract class LoginController extends State<SignInPage> {
           ),
         );
       });
-    } else {
+    } catch (e) {
       setState(() {
         isLoadingFalse();
       });
-      jsonData = json.decode(response.body);
+      print(e);
     }
   }
 }

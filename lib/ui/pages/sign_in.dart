@@ -99,7 +99,7 @@ class _SignInPageState extends LoginController {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Get.to(SignUpPage);
+                                    Get.to(SignUpPage());
                                   },
                                   child: Text(
                                     "Sign Up",
