@@ -5,7 +5,46 @@ class NewProjectPage extends StatefulWidget {
   _NewProjectPageState createState() => _NewProjectPageState();
 }
 
-class _NewProjectPageState extends State<NewProjectPage> {
+class _NewProjectPageState extends NewProjectController {
+  @override
+  void initState() {
+    mockProject = [];
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => getNewProject(0).then((response) {
+              response.map((e) {
+                print(e);
+                var tile = mockProject.firstWhere((item) => item.id == e['id'],
+                    orElse: () => null);
+                if (tile != null)
+                  setState(() => tile = NewProject(
+                      name: e['title'],
+                      description: "dari API",
+                      id: e['id'],
+                      picturePath: e['photos'] != []
+                          ? e['photos'][0]['photo']
+                          : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                      start: "Start",
+                      date: e['startDate']));
+                else {
+                  mockProject.add(NewProject(
+                      name: e['title'],
+                      description: "dari API",
+                      id: e['id'],
+                      picturePath: e['photos'] != []
+                          ? e['photos'][0]['photo']
+                          : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                      start: "Start",
+                      date: e['startDate']));
+                }
+              }).toList();
+              setState(() {
+                isLoadingFalse();
+              });
+            }));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,14 +100,18 @@ class _NewProjectPageState extends State<NewProjectPage> {
                             onTap: () {
                               Get.to(DetailPage());
                             },
-                            child: Column(
-                                children: mockProject
-                                    .map((e) => Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 16),
-                                          child: NewProject2Card(e),
-                                        ))
-                                    .toList()),
+                            child: isLoading()
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : Column(
+                                    children: mockProject
+                                        .map((e) => Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 16),
+                                              child: NewProject2Card(e),
+                                            ))
+                                        .toList()),
                           ),
                         ),
                       ],

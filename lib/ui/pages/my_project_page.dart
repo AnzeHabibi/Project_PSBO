@@ -37,7 +37,11 @@ class _MyProjectPageState extends MyProjectController {
                       date: e['endDate']));
                 }
               }).toList();
+              setState(() {
+                isLoadingFalse();
+              });
             }));
+
     super.initState();
   }
 
@@ -103,7 +107,7 @@ class _MyProjectPageState extends MyProjectController {
                                     onTap: () {
                                       Get.to(DetailPage());
                                     },
-                                    child: mockMyProject.isEmpty
+                                    child: isLoading()
                                         ? Center(
                                             child: CircularProgressIndicator(),
                                           )
