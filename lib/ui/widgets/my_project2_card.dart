@@ -7,6 +7,7 @@ class MyProject2Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(myProject.photoCreator);
     return Container(
       height: 152,
       width: double.infinity,

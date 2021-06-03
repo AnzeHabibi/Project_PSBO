@@ -5,7 +5,42 @@ class MyProjectPage extends StatefulWidget {
   _MyProjectPageState createState() => _MyProjectPageState();
 }
 
-class _MyProjectPageState extends State<MyProjectPage> {
+class _MyProjectPageState extends MyProjectController {
+  @override
+  void initState() {
+    mockMyProject = [];
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => getMyProject(0).then((response) {
+              response.map((e) {
+                var tile = mockMyProject.firstWhere(
+                    (item) => item.id == e['id'],
+                    orElse: () => null);
+                if (tile != null)
+                  setState(() => tile = MyProject(
+                      name: e['title'],
+                      description: "dari API",
+                      id: e['id'],
+                      photoCreator: e['projectManager']['photo'] != ''
+                          ? e['projectManager']['photo']
+                          : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                      start: "Deadline",
+                      date: e['endDate']));
+                else {
+                  mockMyProject.add(MyProject(
+                      name: e['title'],
+                      description: "dari API",
+                      id: e['id'],
+                      photoCreator: e['projectManager']['photo'] != ''
+                          ? e['projectManager']['photo']
+                          : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                      start: "Deadline",
+                      date: e['endDate']));
+                }
+              }).toList();
+            }));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,14 +103,19 @@ class _MyProjectPageState extends State<MyProjectPage> {
                                     onTap: () {
                                       Get.to(DetailPage());
                                     },
-                                    child: Column(
-                                        children: mockMyProject
-                                            .map((e) => Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 8),
-                                                  child: MyProject2Card(e),
-                                                ))
-                                            .toList()),
+                                    child: mockMyProject.isEmpty
+                                        ? Center(
+                                            child: CircularProgressIndicator(),
+                                          )
+                                        : Column(
+                                            children: mockMyProject
+                                                .map((e) => Padding(
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              vertical: 8),
+                                                      child: MyProject2Card(e),
+                                                    ))
+                                                .toList()),
                                   ),
                                 ),
                               ],
