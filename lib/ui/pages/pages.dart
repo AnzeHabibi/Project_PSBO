@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:project_psbo/controller/detailProjectController.dart';
 import 'package:project_psbo/controller/myProjectController.dart';
 import 'package:project_psbo/controller/newProjectController.dart';
 import 'package:project_psbo/controller/signInController.dart';

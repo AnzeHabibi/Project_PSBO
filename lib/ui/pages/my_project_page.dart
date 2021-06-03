@@ -100,30 +100,31 @@ class _MyProjectPageState extends MyProjectController {
                             SizedBox(
                               height: 12,
                             ),
-                            Column(
-                              children: [
-                                Container(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.to(DetailPage());
-                                    },
-                                    child: isLoading()
-                                        ? Center(
-                                            child: CircularProgressIndicator(),
-                                          )
-                                        : Column(
+                            isLoading()
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : Column(
+                                    children: [
+                                      Container(
+                                        child: Column(
                                             children: mockMyProject
-                                                .map((e) => Padding(
+                                                .map((e) => GestureDetector(
+                                                    onTap: () {
+                                                      Get.to(DetailPage(
+                                                        id: e.id,
+                                                      ));
+                                                    },
+                                                    child: Padding(
                                                       padding:
                                                           EdgeInsets.symmetric(
                                                               vertical: 8),
                                                       child: MyProject2Card(e),
-                                                    ))
+                                                    )))
                                                 .toList()),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
-                            ),
                           ],
                         ),
                       ),
