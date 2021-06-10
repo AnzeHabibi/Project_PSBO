@@ -1,3 +1,4 @@
+
 # Project_PSBO
 Nama Sistem : Gofind<br />
 Paralel Praktkum : P1<br />
@@ -77,6 +78,7 @@ Sistem perangkat lunak yang sudah diintegrasikan kepada user, tentunya akan meng
 ### Class diagram
 ![enter image description here](https://scontent-sin6-1.xx.fbcdn.net/v/t1.15752-9/191351829_144046597718112_8409705003102667686_n.png?_nc_cat=100&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeHOWFQO9nhi7AI_zn0V83Yqu0GVJTWEQkC7QZUlNYRCQO92TK1nAzWfeQPrZOkpZu9XhI1FffQwzslYO8Wg_jwo&_nc_ohc=qrK1M6EpCXQAX__BAcN&_nc_ht=scontent-sin6-1.xx&oh=024045a485279932aca5c0fa87c04053&oe=60D9FA80)
 ### Entity Relationship Diagram
+![enter image description here](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/197460782_4325891917445414_6553478069443013236_n.png?_nc_cat=110&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGmm5Lvgb6u9hWxF5IOpzBk8HdZKf8awAfwd1kp_xrAB_S5bw20Ap9ATuG5olgpiio5DnM1zA5DVCNRw2ecpgEi&_nc_ohc=HeUQfZGySNgAX8ph8I2&tn=xAo5jjmYoiaU7dPL&_nc_ht=scontent.fcgk18-2.fna&oh=3dc648675ed6f71839af8d826231ee69&oe=60E6C83E)
 ### Arsitektur sistem
 ### Fungsi utama yang dikembangkan
 ### Fungsi CRUD
