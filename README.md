@@ -16,6 +16,22 @@ Kami ingin membuat ide atau solusi yang dimana user bisa memperlihatkan track re
 ### Software
 ![enter image description here](https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/192647828_350186593197721_8066950454003592681_n.png?_nc_cat=103&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGPTj6WD-XV0RKsPUJMasCGflueE4t0Zox-W54Ti3RmjN9r6CIfGDZwGMP0VwrIFcGp4dxjWdmoaDVaj6lGe7ds&_nc_ohc=-a1SxhVI6aIAX8BoG24&_nc_ht=scontent-sin6-2.xx&oh=3fe1a5df7e2c008ef12b0db9730b4c9c&oe=60DBF9B2)
 ### Hardware
+-   **Nama:**  Samsung Galaxy A11
+-   **Berat:** 177 gram (g)
+-   **Material:**  Depan kaca, bingkai dan belakang plastik
+-   **Jenis dan Ukuran Layar:** PLS IPS dan 6,4 inci (~81.6% rasio layar ke bodi)
+-   **Resolusi Layar:** 720 x 1.560 piksel, 19.5:9 ratio (~268 piksel per inci)
+-   **Chipset:**  Qualcomm Snapdragon 450 (11 nm)
+-   **CPU:**  Octa-core 1.8 GHz Cortex-A53
+-   **GPU:**  Adreno 506
+-   **RAM:** 3 GB
+-   **Memori Internal:**  64 GB
+-   **Kamera Belakang:**  13 MP (f/1.8, 27mm wide, AF) + 5 MP (f/2.2, 115˚ ultrawide) +  
+    2 MP (f/2.4, depth)
+-   **Kamera Depan:** 8 MP, f/2.0
+-   **Bluetooth:** 4.2, A2DP, LE
+-   **Sensor:** Sidik jari (di belakang),  _accelerometer, proximity_
+-   **Baterai:**  Li-Po 4000 mAh, non-removable, Fast charging 15W
 ### TechStack
 Aplikasi **GoFind** adalah aplikasi yang berbasis Mobile yang dibuat menggunakan framework Flutter yang adalah SDK (_Software Development Kit_) yang dikembangkan oleh Google untuk membuat aplikasi yang bagus dan bisa berjalan pada berbagai platform. Backend untuk aplikasi ini menggunakan MongoDB, Express, ODM Mongoose, dan Thunder Client untuk aplikasi ini.
 
