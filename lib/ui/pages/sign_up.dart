@@ -165,7 +165,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
                             child: Text(
-                              "Countinue",
+                              "Continue",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 16),
                               textAlign: TextAlign.center,
@@ -231,11 +231,16 @@ class _SignUpPageState extends State<SignUpPage> {
                                 color: Color(0xFF424874),
                                 fontWeight: FontWeight.w400),
                           ),
-                          Text(
-                            "Sign In",
-                            style: TextStyle(
-                                color: Color(0xFF424874),
-                                fontWeight: FontWeight.w700),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(SignInPage());
+                            },
+                            child: Text(
+                              "Sign In",
+                              style: TextStyle(
+                                  color: Color(0xFF424874),
+                                  fontWeight: FontWeight.w700),
+                            ),
                           )
                         ],
                       ),
@@ -251,13 +256,14 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 }
 
-TextEditingController emailController = new TextEditingController();
 bool _validateEmail = false;
 bool _validatePassword = false;
 bool _validatePhone = false;
 bool _validateNick = false;
 bool _validateRole = false;
 bool _validateSpecialist = false;
+
+TextEditingController emailController = new TextEditingController();
 Widget _buildEmailTF() {
   return Container(
     child: Column(

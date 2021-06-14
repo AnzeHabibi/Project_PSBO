@@ -1,6 +1,11 @@
 part of 'widget.dart';
 
 class MyProfileCard extends StatelessWidget {
+
+  final MyProfile myProfile;
+
+  const MyProfileCard({Key key, this.myProfile}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -28,7 +33,7 @@ class MyProfileCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    
+
                     Container(
                       height: 85,
                       width: 85,
@@ -37,16 +42,16 @@ class MyProfileCard extends StatelessWidget {
                           border: Border.all(color: Colors.white, width: 2),
                           image: DecorationImage(
                               image: NetworkImage(
-                                  "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_800_800/0/1608781057747?e=1620864000&v=beta&t=7n3Gd-JXKjKD_pkZ2GERYlNaFCLIGf_URZgVWpaQsoE"),
+                          "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png"),
                               fit: BoxFit.cover)),
                     ),
                     
                     Column(
                       children: [
                         SizedBox(height: 100),
-                        Text("Abiyyu", style: blueFontStyle1.copyWith(fontSize:24),),
+                        Text(myProfile.name, style: blueFontStyle1.copyWith(fontSize:24),),
                         SizedBox(height:8),
-                        Text("abiyyu.mantab@mail.com", style: blackFontStyle3.copyWith(fontSize:16, color: Colors.grey),),
+                        Text(myProfile.mail, style: blackFontStyle3.copyWith(fontSize:16, color: Colors.grey),),
                         SizedBox(height:16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

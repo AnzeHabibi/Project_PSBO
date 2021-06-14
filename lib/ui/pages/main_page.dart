@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> {
                                   ],
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                          "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_800_800/0/1608781057747?e=1620864000&v=beta&t=7n3Gd-JXKjKD_pkZ2GERYlNaFCLIGf_URZgVWpaQsoE"),
+                                          "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_200_200/0/1608781057747?e=1628726400&v=beta&t=QXBHlzzuDxiRl8DHjzIfaW1lS9RXAqJlq8WB7A4Z4ck"),
                                       fit: BoxFit.cover)),
                             ),
                           )

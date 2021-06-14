@@ -1,10 +1,11 @@
+//import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_psbo/ui/pages/pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
-abstract class MyProjectController extends State<MyProjectPage> {
+abstract class ShowProfileController extends State<MyProfilePage> {
   bool _isLoading = false;
 
   isLoadingTrue() {
@@ -19,7 +20,23 @@ abstract class MyProjectController extends State<MyProjectPage> {
     return this._isLoading;
   }
 
-  Future<dynamic> getMyProject(int page) async {
+  String name;
+  String mail;
+  String specialist;
+  String whatsapp;
+  String instagram;
+  String photo;
+
+  ShowProfileController(
+  {this.name,
+    this.mail,
+    this.specialist,
+    this.whatsapp,
+    this.instagram,
+    this.photo
+  });
+
+  getMyProfile() async {
     setState(() {
       isLoadingTrue();
     });
@@ -28,17 +45,21 @@ abstract class MyProjectController extends State<MyProjectPage> {
     var token = sharedPreferences.getString('token');
     try {
       var response = await http.get(
-          "https://mamen-lancer.herokuapp.com/api/project/myproject?page=" +
-              page.toString(),
+          "https://mamen-lancer.herokuapp.com/api/user/auth",
           headers: {
             'Authorization': 'Bearer $token',
           });
-      Map<String, dynamic> map = json.decode(response.body);
-      List<dynamic> data = map["projects"];
-      //print(data[0]);
-      print(data.toString());
+      var map = json.decode(response.body);
+      print(map);
+      name = map['name'];
+      //print(name);
+      //print(data.toString());
       // print(jsonData);
-      return data;
+      return map;
+      //name = map['name'];
+      //mail = map['email'];
+      //specialist = map['specialist']; blm ada di api
+      //photo = map['photo'];
     } catch (e) {
       setState(() {
         isLoadingFalse();

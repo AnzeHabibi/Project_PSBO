@@ -5,7 +5,7 @@ class UploadPost extends StatefulWidget {
   _UploadPost createState() => _UploadPost();
 }
 
-class _UploadPost extends State<UploadPost> {
+class _UploadPost extends CreateProjectController {
   File _image;
   DateTimeRange dateRange;
 
@@ -69,13 +69,16 @@ class _UploadPost extends State<UploadPost> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return isLoading()
+        ? Center(
+            child: CircularProgressIndicator(),
+        )
+    : MaterialApp(
       home: Scaffold(
           backgroundColor: Color(0xFFFBFBFB),
           body: SafeArea(
-              child: ListView(
-            padding: const EdgeInsets.fromLTRB(0, 0, 0, 64),
-            children: [_mainContent()],
+              child: ListView(padding: const EdgeInsets.fromLTRB(0, 0, 0, 64),
+                  children: [_mainContent()],
           )),
           floatingActionButton: _buttonBottom(),
           floatingActionButtonLocation:
@@ -371,7 +374,13 @@ class _UploadPost extends State<UploadPost> {
             onPressed: () {
               setState(() {
                 if (!caption.text.isEmpty && !titleProject.text.isEmpty) {
-                  Get.to(MainPage());
+                  isLoadingTrue();
+                  createProject(
+                      titleProject.text,
+                      caption.text,
+                      DateFormat('yyyy-MM-dd').format(dateRange.start).toString(),
+                      DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
+                      _image);
                 }
               });
             },

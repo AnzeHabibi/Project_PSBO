@@ -5,7 +5,29 @@ class MyProfilePage extends StatefulWidget {
   _MyProfilePageState createState() => _MyProfilePageState();
 }
 
-class _MyProfilePageState extends State<MyProfilePage> {
+class _MyProfilePageState extends ShowProfileController {
+  @override
+  void initState(){
+    mockMyProfile = [];
+    WidgetsBinding.instance.addPostFrameCallback((_) => getMyProfile().then((response){
+      response.map((e){
+        setState(() => MyProfile(
+            name: e['name'],
+            mail: e['email'],
+            photo: e['projectManager']['photo'] != ''
+                ? e['projectManager']['photo']
+                : "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png",
+            specialist: "UI/UX Design",
+            instagram: "",
+            whatsapp: ""
+        ));
+      });
+      setState(() {
+        isLoadingFalse();
+      });
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,7 +144,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                             ),
                           ),
                           onPressed: () {
-                            Get.to(SignUpPage());
+                            Get.to(SignInPage());
                           },
                           color: Color(0xFFD43F51),
                         ),
