@@ -14,13 +14,11 @@ class _DetailPageState extends DetailProjectController {
   var dataPhotoProject;
   @override
   void initState() {
-    print(widget.id);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       dataProject = getDetailProject(widget.id).then((data) {
         setState(() {
           dataProject = data;
           dataPhotoProject = dataProject['project']['photos'];
-          print(dataPhotoProject);
           isLoadingFalse();
         });
       });

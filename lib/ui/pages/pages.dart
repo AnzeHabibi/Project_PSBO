@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_psbo/controller/createProjectController.dart';
+import 'package:project_psbo/controller/dashboardController.dart';
 import 'package:project_psbo/controller/detailProjectController.dart';
 import 'package:project_psbo/controller/myProjectController.dart';
 import 'package:project_psbo/controller/newProjectController.dart';

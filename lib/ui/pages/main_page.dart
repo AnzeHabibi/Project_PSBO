@@ -5,236 +5,314 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends DashboardController {
+  List<MyProject> FiveMyProject = [];
+  List<NewProject> FiveNewProjects = [];
+  List<MyProject> FivePendingprojects = [];
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getDashboard().then((data) {
+        setState(() {
+          List<dynamic> fiveMyProjectList = data["CompleteFiveMyProject"];
+          fiveMyProjectList.map((e) {
+            print("e" + e.toString());
+            var tile = FiveMyProject.firstWhere((item) => item.id == e['id'],
+                orElse: () => null);
+            if (tile != null)
+              setState(() => tile = MyProject(
+                  name: e['title'],
+                  description: "dari API",
+                  id: e['id'],
+                  photoCreator: e['projectManager']['photo'] != ''
+                      ? e['projectManager']['photo']
+                      : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                  start: "Deadline",
+                  date: e['endDate']));
+            else {
+              FiveMyProject.add(MyProject(
+                  name: e['title'],
+                  description: "dari API",
+                  id: e['id'],
+                  photoCreator: e['projectManager']['photo'] != ''
+                      ? e['projectManager']['photo']
+                      : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                  start: "Deadline",
+                  date: e['endDate']));
+            }
+          }).toList();
+          List<dynamic> FiveNewProjectsList = data["FiveNewProjects"];
+          FiveNewProjectsList.map((e) {
+            print(e);
+            var tile = FiveNewProjects.firstWhere((item) => item.id == e['id'],
+                orElse: () => null);
+            if (tile != null)
+              setState(() => tile = NewProject(
+                  name: e['title'],
+                  description: "dari API",
+                  id: e['id'],
+                  picturePath: e['photos'] != []
+                      ? e['photos'][0]['photo']
+                      : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                  start: "Start",
+                  date: e['startDate']));
+            else {
+              FiveNewProjects.add(NewProject(
+                  name: e['title'],
+                  description: "dari API",
+                  id: e['id'],
+                  picturePath: e['photos'] != []
+                      ? e['photos'][0]['photo']
+                      : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+                  start: "Start",
+                  date: e['startDate']));
+            }
+          }).toList();
+          List<dynamic> FivePendingprojectsList = data["FivePendingprojects"];
+          print("Aaa" + FiveMyProject.toString());
+          isLoadingFalse();
+        });
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          Stack(
-            children: [
-              Container(color: Colors.white),
-              SafeArea(
-                  child: Container(
-                color: Color(0xFFFBFCFD),
-              )),
-              SafeArea(
-                child: Column(
+    return isLoading()
+        ? Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+        : Scaffold(
+            body: ListView(
+              children: [
+                Stack(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Container(color: Colors.white),
+                    SafeArea(
+                        child: Container(
+                      color: Color(0xFFFBFCFD),
+                    )),
+                    SafeArea(
+                      child: Column(
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Good Morning, ",
-                                  style: blueFontStyle1.copyWith(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w400)),
-                              Text("Abiyyu Habibi",
-                                  style: blueFontStyle1.copyWith(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w900)),
-                            ],
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(MyProfilePage());
-                            },
-                            child: Container(
-                              height: 60,
-                              width: 60,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.blue[100].withOpacity(0.5),
-                                      spreadRadius: 0.5,
-                                      blurRadius: 3,
-                                      offset: Offset(
-                                          0, 2), // changes position of shadow
-                                    ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Good Morning, ",
+                                        style: blueFontStyle1.copyWith(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w400)),
+                                    Text("Abiyyu Habibi",
+                                        style: blueFontStyle1.copyWith(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w900)),
                                   ],
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_200_200/0/1608781057747?e=1628726400&v=beta&t=QXBHlzzuDxiRl8DHjzIfaW1lS9RXAqJlq8WB7A4Z4ck"),
-                                      fit: BoxFit.cover)),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 24),
-                    Container(
-                      width: MediaQuery.of(context).size.width - (2 * 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text("Your Projects",
-                              style: blueFontStyle2.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: mainColor)),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(MyProjectPage());
-                            },
-                            child: Text(
-                              "see all",
-                              style: blueFontStyle2.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w200,
-                                  color: mainColor),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(MyProfilePage());
+                                  },
+                                  child: Container(
+                                    height: 60,
+                                    width: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(16),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.blue[100]
+                                                .withOpacity(0.5),
+                                            spreadRadius: 0.5,
+                                            blurRadius: 3,
+                                            offset: Offset(0,
+                                                2), // changes position of shadow
+                                          ),
+                                        ],
+                                        image: DecorationImage(
+                                            image: NetworkImage(
+                                                "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_200_200/0/1608781057747?e=1628726400&v=beta&t=QXBHlzzuDxiRl8DHjzIfaW1lS9RXAqJlq8WB7A4Z4ck"),
+                                            fit: BoxFit.cover)),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Container(
-                        height: 188,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: mockMyProject
-                                    .map((e) => Padding(
-                                          padding: EdgeInsets.only(
-                                              left: (e == mockMyProject.first)
-                                                  ? 16
-                                                  : 0,
-                                              right: 16),
-                                          child: MyProjectCard(e),
-                                        ))
-                                    .toList(),
-                              ),
-                            )
-                          ],
-                        )),
-                    SizedBox(height: 24),
-                    Container(
-                      width: MediaQuery.of(context).size.width - (2 * 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text("New Project",
-                              style: blueFontStyle2.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: mainColor)),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(NewProjectPage());
-                            },
-                            child: Text(
-                              "see all",
-                              style: blueFontStyle2.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w200,
-                                  color: mainColor),
+                          SizedBox(height: 24),
+                          Container(
+                            width: MediaQuery.of(context).size.width - (2 * 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text("Your Projects",
+                                    style: blueFontStyle2.copyWith(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        color: mainColor)),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(MyProjectPage());
+                                  },
+                                  child: Text(
+                                    "see all",
+                                    style: blueFontStyle2.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w200,
+                                        color: mainColor),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                        height: 228,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(DetailPage());
-                              },
-                              child: Row(
-                                children: mockProject
-                                    .map((e) => Padding(
-                                          padding: EdgeInsets.only(
-                                              left: (e == mockProject.first)
-                                                  ? 16
-                                                  : 0,
-                                              right: 16),
-                                          child: NewProjectCard(e),
-                                        ))
-                                    .toList(),
-                              ),
-                            )
-                          ],
-                        )),
-                    SizedBox(height: 16),
-                    Container(
-                      width: MediaQuery.of(context).size.width - (2 * 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text("Pending",
-                              style: blueFontStyle2.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: mainColor)),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(PendingProjectPage());
-                            },
-                            child: Text(
-                              "see all",
-                              style: blueFontStyle2.copyWith(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w200,
-                                  color: mainColor),
+                          SizedBox(height: 16),
+                          Container(
+                              height: 188,
+                              width: double.infinity,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Row(
+                                      children:
+                                          FiveMyProject.map((e) => Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: (e ==
+                                                            FiveMyProject.first)
+                                                        ? 16
+                                                        : 0,
+                                                    right: 16),
+                                                child: MyProjectCard(e),
+                                              )).toList(),
+                                    ),
+                                  )
+                                ],
+                              )),
+                          SizedBox(height: 24),
+                          Container(
+                            width: MediaQuery.of(context).size.width - (2 * 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text("New Project",
+                                    style: blueFontStyle2.copyWith(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        color: mainColor)),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(NewProjectPage());
+                                  },
+                                  child: Text(
+                                    "see all",
+                                    style: blueFontStyle2.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w200,
+                                        color: mainColor),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
+                          Container(
+                              height: 228,
+                              width: double.infinity,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  Row(
+                                    children: FiveNewProjects.map((e) =>
+                                        Padding(
+                                            padding: EdgeInsets.only(
+                                                left:
+                                                    (e == FiveNewProjects.first)
+                                                        ? 16
+                                                        : 0,
+                                                right: 16),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                Get.to(DetailPage(id: e.id));
+                                              },
+                                              child: NewProjectCard(e),
+                                            ))).toList(),
+                                  ),
+                                ],
+                              )),
+                          SizedBox(height: 16),
+                          Container(
+                            width: MediaQuery.of(context).size.width - (2 * 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text("Pending",
+                                    style: blueFontStyle2.copyWith(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        color: mainColor)),
+                                GestureDetector(
+                                  onTap: () {
+                                    Get.to(PendingProjectPage());
+                                  },
+                                  child: Text(
+                                    "see all",
+                                    style: blueFontStyle2.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w200,
+                                        color: mainColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                              height: 188,
+                              width: double.infinity,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Row(
+                                      children: mockPendingProject
+                                          .map((e) => Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: (e ==
+                                                            mockPendingProject
+                                                                .first)
+                                                        ? 16
+                                                        : 0,
+                                                    right: 16),
+                                                child: PendingProjectCard(e),
+                                              ))
+                                          .toList(),
+                                    ),
+                                  )
+                                ],
+                              )),
+                          SizedBox(height: 36),
                         ],
                       ),
-                    ),
-                    Container(
-                        height: 188,
-                        width: double.infinity,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                children: mockPendingProject
-                                    .map((e) => Padding(
-                                          padding: EdgeInsets.only(
-                                              left: (e ==
-                                                      mockPendingProject.first)
-                                                  ? 16
-                                                  : 0,
-                                              right: 16),
-                                          child: PendingProjectCard(e),
-                                        ))
-                                    .toList(),
-                              ),
-                            )
-                          ],
-                        )),
-                    SizedBox(height: 36),
+                    )
                   ],
                 ),
-              )
-            ],
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        backgroundColor: mainColor,
-        onPressed: () {
-          Get.to(UploadPost());
-        },
-      ),
-    );
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              child: Icon(Icons.add),
+              backgroundColor: mainColor,
+              onPressed: () {
+                Get.to(UploadPost());
+              },
+            ),
+          );
   }
 }

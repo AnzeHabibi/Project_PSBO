@@ -96,23 +96,22 @@ class _NewProjectPageState extends NewProjectController {
                       children: [
                         _buildSearchTF(),
                         Container(
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(DetailPage());
-                            },
-                            child: isLoading()
-                                ? Center(
-                                    child: CircularProgressIndicator(),
-                                  )
-                                : Column(
-                                    children: mockProject
-                                        .map((e) => Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 16),
-                                              child: NewProject2Card(e),
-                                            ))
-                                        .toList()),
-                          ),
+                          child: isLoading()
+                              ? Center(
+                                  child: CircularProgressIndicator(),
+                                )
+                              : Column(
+                                  children: mockProject
+                                      .map((e) => Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 16),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Get.to(DetailPage(id: e.id));
+                                            },
+                                            child: NewProject2Card(e),
+                                          )))
+                                      .toList()),
                         ),
                       ],
                     ),

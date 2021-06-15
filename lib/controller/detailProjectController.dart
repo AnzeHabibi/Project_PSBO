@@ -32,8 +32,7 @@ abstract class DetailProjectController extends State<DetailPage> {
         'Authorization': 'Bearer $token',
       });
       var map = json.decode(response.body);
-      // List<dynamic> data = map["project"];
-      // print(map);
+      print("map" + map.toString());
       return map;
     } catch (e) {
       setState(() {
