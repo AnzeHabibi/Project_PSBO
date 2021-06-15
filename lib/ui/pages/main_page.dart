@@ -6,6 +6,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends DashboardController {
+  var name, photo;
   List<MyProject> FiveMyProject = [];
   List<NewProject> FiveNewProjects = [];
   List<MyProject> FivePendingprojects = [];
@@ -14,6 +15,10 @@ class _MainPageState extends DashboardController {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getDashboard().then((data) {
         setState(() {
+          name = data['user']['name'];
+          photo = data['user']['photo'] != ''
+              ? data['user']['photo']
+              : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80";
           List<dynamic> fiveMyProjectList = data["CompleteFiveMyProject"];
           fiveMyProjectList.map((e) {
             print("e" + e.toString());
@@ -69,7 +74,7 @@ class _MainPageState extends DashboardController {
             }
           }).toList();
           List<dynamic> FivePendingprojectsList = data["FivePendingprojects"];
-          print("Aaa" + FiveMyProject.toString());
+          print("Aaa" + fiveMyProjectList.length.toString());
           isLoadingFalse();
         });
       });
@@ -110,7 +115,7 @@ class _MainPageState extends DashboardController {
                                         style: blueFontStyle1.copyWith(
                                             fontSize: 24,
                                             fontWeight: FontWeight.w400)),
-                                    Text("Abiyyu Habibi",
+                                    Text(name.toString(),
                                         style: blueFontStyle1.copyWith(
                                             fontSize: 24,
                                             fontWeight: FontWeight.w900)),
@@ -136,8 +141,7 @@ class _MainPageState extends DashboardController {
                                           ),
                                         ],
                                         image: DecorationImage(
-                                            image: NetworkImage(
-                                                "https://media-exp1.licdn.com/dms/image/C5603AQH3bArr0cSQLA/profile-displayphoto-shrink_200_200/0/1608781057747?e=1628726400&v=beta&t=QXBHlzzuDxiRl8DHjzIfaW1lS9RXAqJlq8WB7A4Z4ck"),
+                                            image: NetworkImage(photo),
                                             fit: BoxFit.cover)),
                                   ),
                                 )

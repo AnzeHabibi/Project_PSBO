@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:project_psbo/ui/pages/pages.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class CreateProjectController extends State<UploadPost> {
   bool _isLoading = false;
@@ -21,14 +22,18 @@ abstract class CreateProjectController extends State<UploadPost> {
   }
 
   createProject(
-      String titleProject,
-      String caption,
-      String startDate,
-      String endDate,
-      File photo,
-      ) async {
+    String titleProject,
+    String caption,
+    String startDate,
+    String endDate,
+    File photo,
+  ) async {
     try {
+      print(startDate + '=' + endDate);
       //create multipart request for POST or PATCH method
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      var token = sharedPreferences.getString('token');
       var request = http.MultipartRequest(
           "POST", Uri.parse("https://mamen-lancer.herokuapp.com/api/project/"));
       //add text fields
@@ -38,22 +43,19 @@ abstract class CreateProjectController extends State<UploadPost> {
       request.fields['endDate'] = endDate;
       request.fields['startDate'] = startDate;
       //create multipart using filepath, string or bytes
-      Map<String, String> headers = {"Content-type": "multipart/form-data"};
+      Map<String, String> headers = {
+        "Content-type": "multipart/form-data",
+        "Authorization": "Bearer $token"
+      };
       var pic = await http.MultipartFile.fromPath(
-        "photo",
+        "photos",
         photo.path,
         contentType: MediaType('image', 'jpeg'),
-      );
-      pic = await http.MultipartFile.fromPath(
-        "photo",
-        photo.path,
-        contentType: MediaType('image', 'png'),
       );
       request.headers.addAll(headers);
       //add multipart to request
       request.files.add(pic);
       print("request: " + request.toString());
-
 
       var response = await request.send();
       var responseData = await response.stream.toBytes();
@@ -65,7 +67,7 @@ abstract class CreateProjectController extends State<UploadPost> {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => MainPage()),
-              (Route<dynamic> route) => false,
+          (Route<dynamic> route) => false,
         );
       });
     } catch (e) {

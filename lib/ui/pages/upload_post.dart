@@ -72,18 +72,19 @@ class _UploadPost extends CreateProjectController {
     return isLoading()
         ? Center(
             child: CircularProgressIndicator(),
-        )
-    : MaterialApp(
-      home: Scaffold(
-          backgroundColor: Color(0xFFFBFBFB),
-          body: SafeArea(
-              child: ListView(padding: const EdgeInsets.fromLTRB(0, 0, 0, 64),
+          )
+        : MaterialApp(
+            home: Scaffold(
+                backgroundColor: Color(0xFFFBFBFB),
+                body: SafeArea(
+                    child: ListView(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 64),
                   children: [_mainContent()],
-          )),
-          floatingActionButton: _buttonBottom(),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked),
-    );
+                )),
+                floatingActionButton: _buttonBottom(),
+                floatingActionButtonLocation:
+                    FloatingActionButtonLocation.centerDocked),
+          );
   }
 
   Widget _mainContent() {
@@ -378,7 +379,9 @@ class _UploadPost extends CreateProjectController {
                   createProject(
                       titleProject.text,
                       caption.text,
-                      DateFormat('yyyy-MM-dd').format(dateRange.start).toString(),
+                      DateFormat('yyyy-MM-dd')
+                          .format(dateRange.start)
+                          .toString(),
                       DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
                       _image);
                 }
