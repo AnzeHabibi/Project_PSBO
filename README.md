@@ -96,13 +96,16 @@ Sistem perangkat lunak yang sudah diintegrasikan kepada user, tentunya akan meng
 ### Entity Relationship Diagram
 ![enter image description here](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/197460782_4325891917445414_6553478069443013236_n.png?_nc_cat=110&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGmm5Lvgb6u9hWxF5IOpzBk8HdZKf8awAfwd1kp_xrAB_S5bw20Ap9ATuG5olgpiio5DnM1zA5DVCNRw2ecpgEi&_nc_ohc=HeUQfZGySNgAX8ph8I2&tn=xAo5jjmYoiaU7dPL&_nc_ht=scontent.fcgk18-2.fna&oh=3dc648675ed6f71839af8d826231ee69&oe=60E6C83E)
 ### Arsitektur sistem
+![enter image description here](https://scontent.fcgk8-1.fna.fbcdn.net/v/t1.15752-9/200212655_234929138098479_9048520659434407682_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeE_OetGLT2ADZxa05fySTvt64jbcsuHyvXriNtyy4fK9Ye1BkbCfaSnEyUCp2jiedSCbLvH_xaVtYxJHm7Ev-MR&_nc_ohc=jfCUirUAtzcAX-MCRdC&tn=xAo5jjmYoiaU7dPL&_nc_ht=scontent.fcgk8-1.fna&oh=5d1b72c5e5e7458f1079cf64f6ba49df&oe=60CE0177)
 ### Fungsi utama yang dikembangkan
-Fungsi Utama yang dikembangkan adalah Pembuatan project yang dibuat oleh Project Manager dan Project tersebut dapat diikuti oleh pengguna lain yang sedang mencari project.
+Fungsi Utama yang dikembangkan adalah Pembuatan project yang dibuat oleh Project Manager dan Project tersebut dapat diikuti oleh pengguna lain yang sedang mencari project. 
 ### Fungsi CRUD
 1. Create Project: Pengguna dapat membuat project dengan atribut nama, deskripsi, estimated time dan project photos. Untuk Project Manager akan menggunakan Id User yang sudah membuat Project
 2. Read Projet: Pengguna dapat melihat project pengguna lain dan project yang sudah dia buat pada halaman utaan
 3. Update Project: Pengguna yang merupkana Project Manager dapat memperbarui atribut project nama, deskripsi dan estimated time selama project member belum di rekrut.
 4. Delete Project: Pengguna yang merupakan Project Manager dapat menghapus projeect selama project member belum di rekrut. 
+
+
 ## Hasil implementasi
 ### Screenshot sistem
 ### Link aplikasi
