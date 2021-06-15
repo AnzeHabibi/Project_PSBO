@@ -1,4 +1,3 @@
-//import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_psbo/ui/pages/pages.dart';
@@ -28,13 +27,12 @@ abstract class ShowProfileController extends State<MyProfilePage> {
   String photo;
 
   ShowProfileController(
-  {this.name,
-    this.mail,
-    this.specialist,
-    this.whatsapp,
-    this.instagram,
-    this.photo
-  });
+      {this.name,
+      this.mail,
+      this.specialist,
+      this.whatsapp,
+      this.instagram,
+      this.photo});
 
   getMyProfile() async {
     setState(() {
@@ -44,14 +42,13 @@ abstract class ShowProfileController extends State<MyProfilePage> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     try {
-      var response = await http.get(
-          "https://mamen-lancer.herokuapp.com/api/user/auth",
-          headers: {
-            'Authorization': 'Bearer $token',
-          });
+      var response = await http
+          .get("https://mamen-lancer.herokuapp.com/api/user/auth", headers: {
+        'Authorization': 'Bearer $token',
+      });
       var map = json.decode(response.body);
-      print(map);
-      name = map['name'];
+      print("aaaasv" + map.toString());
+      // name = map['name'];
       //print(name);
       //print(data.toString());
       // print(jsonData);

@@ -7,16 +7,16 @@ class MyProfile {
   String whatsapp;
   String instagram;
   String photo;
+  String id;
 
-  MyProfile({
-    this.name,
-    this.mail,
-    this.specialist,
-    this.whatsapp,
-    this.instagram,
-    this.photo
-  });
-
+  MyProfile(
+      {this.name,
+      this.mail,
+      this.specialist,
+      this.whatsapp,
+      this.instagram,
+      this.photo,
+      this.id});
 }
 
 List<MyProfile> mockMyProfile = [];
