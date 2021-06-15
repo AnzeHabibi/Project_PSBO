@@ -109,7 +109,6 @@ Fungsi Utama yang dikembangkan adalah Pembuatan project yang dibuat oleh Project
 ## Hasil implementasi
 ### Screenshot sistem
 ![enter image description here](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/p2048x2048/199722182_954367632023641_7813126662179533781_n.png?_nc_cat=107&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGGkt8kSyv2qwrw2Trcxn3vOjNFImoHrm46M0UiageubvsfGYTC-eEvscl-iqU6QO-FkkwsWriaNc7x748GVZAa&_nc_ohc=Pbd0Ot7pxaAAX8aQtZA&_nc_ht=scontent.fcgk18-2.fna&tp=30&oh=65947a31cc9efa1b6bc7ae725c2f2b92&oe=60CD1ABD)
-![enter image description here](https://scontent.fcgk18-1.fna.fbcdn.net/v/t1.15752-0/p206x206/201029141_972376113550021_5233775967797437873_n.png?_nc_cat=103&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeECReP-aPv13R1lRqEnaFz-GlblX3xDM_gaVuVffEMz-CqT5HYGrOb27KMpzCgpmu_zu2jB7hu8b-Hck1PFWMId&_nc_ohc=a-KQ9ThCQ7EAX9cqJFu&_nc_ht=scontent.fcgk18-1.fna&tp=30&oh=664bdc16258946dcdc334ed0c3ceebc2&oe=60CD4EFF)
 ### Link aplikasi
 https://github.com/AnzeHabibi/Project_PSBO
 
