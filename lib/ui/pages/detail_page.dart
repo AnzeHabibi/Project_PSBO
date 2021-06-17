@@ -294,3 +294,88 @@ Widget photoWidget(String link) {
     ],
   );
 }
+
+Widget btnAssign() {
+  return Align(
+    alignment: FractionalOffset.bottomCenter,
+    child: Padding(
+      padding: const EdgeInsets.only(right: 16, left: 16, bottom: 16),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: Container(
+          width: 400,
+          height: 50,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+            child: Text(
+              "Join Project",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        onPressed: () {
+          
+        },
+        color: Color(0xFF1D2A64),
+      ),
+    ),
+  );
+}
+
+Widget btnMember() {
+  return Align(
+    alignment: FractionalOffset.bottomCenter,
+    child: Padding(
+      padding: const EdgeInsets.only(right: 16, left: 16, bottom: 16),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: Container(
+          width: 400,
+          height: 50,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+            child: Text(
+              "See Member",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        onPressed: () {
+        },
+        color: Color(0xFF1DAD2B),
+      ),
+    ),
+  );
+}
+
+Widget btnParticipant() {
+  return Align(
+    alignment: FractionalOffset.bottomCenter,
+    child: Padding(
+      padding: const EdgeInsets.only(right: 16, left: 16, bottom: 16),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: Container(
+          width: 400,
+          height: 50,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+            child: Text(
+              "See Pasrticipant",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        onPressed: () {
+        },
+        color: Color(0xFF696969),
+      ),
+    ),
+  );
+}
