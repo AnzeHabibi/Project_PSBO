@@ -70,7 +70,7 @@ class MyProfileCard extends StatelessWidget {
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  ' ',
+                                  'Student',
                                   style: blackFontStyle3.copyWith(
                                       fontSize: 12,
                                       color: mainColor,
@@ -94,7 +94,7 @@ class MyProfileCard extends StatelessWidget {
                                 SizedBox(height: 8),
                                 Text(
                                   myProfile.specialist != null
-                                      ? myProfile.specialist.toString()
+                                      ? myProfile.specialist
                                       : ' ',
                                   style: blackFontStyle3.copyWith(
                                       fontSize: 12,

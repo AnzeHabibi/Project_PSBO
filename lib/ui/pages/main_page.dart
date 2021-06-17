@@ -111,7 +111,7 @@ class _MainPageState extends DashboardController {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Good Morning, ",
+                                    Text("Welcome,",
                                         style: blueFontStyle1.copyWith(
                                             fontSize: 24,
                                             fontWeight: FontWeight.w400)),

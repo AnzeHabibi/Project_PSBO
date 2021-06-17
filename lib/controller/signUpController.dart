@@ -41,7 +41,7 @@ abstract class SignUpController extends State<SignUnPage2> {
       request.fields['name'] = name;
       request.fields['password'] = password;
       request.fields['phone'] = phone;
-      request.fields['specialist'] = specialist;
+      request.fields['speciality'] = specialist;
       request.fields['linkedin'] = linkedin;
       request.fields['whatsapp'] = whatsapp;
       request.fields['instagram'] = instagram;
