@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+  file_picker: ^3.0.2+2
   flutter_bloc: ^6.1.2
   flutter_spinkit: ^4.1.2+1
   get: ^3.25.6
@@ -31,9 +32,8 @@ dependencies:
   image_picker: ^0.6.6+5
   intl: ^0.16.1
   material_design_icons_flutter: ^4.0.5555
-  supercharged: ^1.12.0
   shared_preferences: ^2.0.5
-
+  supercharged: ^1.12.0
 
 dev_dependencies:
   flutter_test:
@@ -41,7 +41,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -54,13 +53,10 @@ flutter:
   assets:
     - assets/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
