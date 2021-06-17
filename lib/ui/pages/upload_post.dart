@@ -372,6 +372,7 @@ class _UploadPost extends CreateProjectController {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 32, 16, 16),
           child: RaisedButton(
+            color: mainColor,
             onPressed: () {
               setState(() {
                 if (!caption.text.isEmpty && !titleProject.text.isEmpty) {
