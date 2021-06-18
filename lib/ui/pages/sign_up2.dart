@@ -22,47 +22,7 @@ class SignUnPage2 extends StatefulWidget {
 }
 
 class _SignUnPage2State extends SignUpController {
-  String _fileName;
-  String _path;
-  Map<String, String> _paths;
-  String _extension;
-  bool _loadingPath = false;
-  bool _multiPick = false;
-  bool _hasValidMime = false;
-  FileType _pickingType;
-  TextEditingController _controller = new TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.addListener(() => _extension = _controller.text);
-  }
-
-  void _openFileExplorer() async {
-    if (_pickingType != FileType.CUSTOM || _hasValidMime) {
-      setState(() => _loadingPath = true);
-      try {
-        if (_multiPick) {
-          _path = null;
-          _paths = await FilePicker.getMultiFilePath(
-              type: _pickingType, fileExtension: _extension);
-        } else {
-          _paths = null;
-          _path = await FilePicker.getFilePath(
-              type: _pickingType, fileExtension: _extension);
-        }
-      } on PlatformException catch (e) {
-        print("Unsupported operation" + e.toString());
-      }
-      if (!mounted) return;
-      setState(() {
-        _loadingPath = false;
-        _fileName = _path != null
-            ? _path.split('/').last
-            : _paths != null ? _paths.keys.toString() : '...';
-      });
-    }
-  }
+  String cvfilename = '';
   @override
   Widget build(BuildContext context) {
     return isLoading()
@@ -110,7 +70,137 @@ border: OutlineInputBorder(
                                 _buildLinkedinTF(),
                                 _buildWATF(),
                                 _buildInstagramTF(),
-                                _addFileCV(),
+                                Container(
+                                    margin: EdgeInsets.fromLTRB(0, 16, 0, 0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        16, 0, 0, 12),
+                                                child: Text("CV",
+                                                    style: blueFontStyle2),
+                                              ),
+                                              Stack(
+                                                children: <Widget>[
+                                                  Container(
+                                                      width: 400,
+                                                      height: 45.0,
+                                                      child: TextButton(
+                                                        child: Align(
+                                                          alignment: Alignment
+                                                              .centerLeft,
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .fromLTRB(
+                                                                    2, 0, 0, 0),
+                                                            child: Text(
+                                                                cvfilename == ''
+                                                                    ? "Upload CV Here"
+                                                                    : cvfilename,
+                                                                style:
+                                                                    blackFontStyle3),
+                                                          ),
+                                                        ),
+                                                        style: ButtonStyle(
+                                                            shape: MaterialStateProperty
+                                                                .all<
+                                                                    RoundedRectangleBorder>(
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          18.0),
+                                                              side: BorderSide(
+                                                                  color: Color(
+                                                                      0xffD2D9DF),
+                                                                  width: 1.5)),
+                                                        )),
+                                                      )),
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.centerRight,
+                                                    child: Container(
+                                                        width: 100,
+                                                        height: 45.0,
+                                                        child: RaisedButton(
+                                                          textColor:
+                                                              Colors.white,
+                                                          color: mainColor,
+                                                          child: Stack(
+                                                            children: <Widget>[
+                                                              Align(
+                                                                alignment:
+                                                                    Alignment
+                                                                        .center,
+                                                                child: Text(
+                                                                    "Upload",
+                                                                    style: TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            16)),
+                                                              ),
+                                                              GestureDetector(
+                                                                  onTap:
+                                                                      () async {
+                                                                FilePickerResult
+                                                                    result =
+                                                                    await FilePicker
+                                                                        .platform
+                                                                        .pickFiles(
+                                                                  type: FileType
+                                                                      .custom,
+                                                                  allowedExtensions: [
+                                                                    'pdf'
+                                                                  ],
+                                                                );
+
+                                                                if (result !=
+                                                                    null) {
+                                                                  PlatformFile
+                                                                      file =
+                                                                      result
+                                                                          .files
+                                                                          .first;
+
+                                                                  print(file
+                                                                      .path);
+                                                                  setState(() {
+                                                                    cvfilename =
+                                                                        file.name;
+                                                                  });
+                                                                } else {
+                                                                  // User canceled the picker
+                                                                }
+                                                              })
+                                                            ],
+                                                          ),
+                                                          shape: new RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius.only(
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          18),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          18))),
+                                                        )),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    )),
                                 // Padding(
                                 //padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                                 //child: Text("Password", style: TextStyle(color: Color(0xFF424874), fontWeight: FontWeight.w400),),
@@ -370,76 +460,3 @@ Widget _buildCVTF() {
     ),
   );
 }
-
-Widget _addFileCV() {
-    return Container(
-        margin: EdgeInsets.fromLTRB(0, 16, 0, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 0, 12),
-                    child: Text("Photo", style: blueFontStyle2),
-                  ),
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                          width: 400,
-                          height: 45.0,
-                          child: TextButton(
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
-                                child: Text("Upload CV Here",
-                                    style: blackFontStyle3),
-                              ),
-                            ),
-                            style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                  side: BorderSide(
-                                      color: Color(0xffD2D9DF), width: 1.5)),
-                            )),
-                          )),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Container(
-                            width: 100,
-                            height: 45.0,
-                            child: RaisedButton(
-                              textColor: Colors.white,
-                              color: mainColor,
-                              child: Stack(
-                                children: <Widget>[
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: Text("Upload",
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 16)),
-                                  ),
-                                  GestureDetector(onTap: () {
-                                   _openFileExplorer();
-                                  })
-                                ],
-                              ),
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(18),
-                                      topRight: Radius.circular(18))),
-                            )),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ],
-        ));
-  }

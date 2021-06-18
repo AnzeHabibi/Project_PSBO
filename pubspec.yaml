@@ -24,7 +24,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  file_picker: ^3.0.2+2
   flutter_bloc: ^6.1.2
   flutter_spinkit: ^4.1.2+1
   get: ^3.25.6
@@ -34,6 +33,7 @@ dependencies:
   material_design_icons_flutter: ^4.0.5555
   shared_preferences: ^2.0.5
   supercharged: ^1.12.0
+  file_picker: ^2.1.7
 
 dev_dependencies:
   flutter_test:
