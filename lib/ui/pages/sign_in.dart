@@ -82,36 +82,36 @@ class _SignInPageState extends LoginController {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(SignUpPage());
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(24.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  "Don't have an account ? ",
-                                  style: TextStyle(
-                                      color: Color(0xFF424874),
-                                      fontWeight: FontWeight.w400),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(SignUpPage());
-                                  },
-                                  child: Text(
-                                    "Sign Up",
-                                    style: TextStyle(
-                                        color: Color(0xFF424874),
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        )
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     Get.to(SignUpPage());
+                        //   },
+                        //   child: Padding(
+                        //     padding: const EdgeInsets.all(24.0),
+                        //     child: Row(
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       children: <Widget>[
+                        //         Text(
+                        //           "Don't have an account ? ",
+                        //           style: TextStyle(
+                        //               color: Color(0xFF424874),
+                        //               fontWeight: FontWeight.w400),
+                        //         ),
+                        //         GestureDetector(
+                        //           onTap: () {
+                        //             Get.to(SignUpPage());
+                        //           },
+                        //           child: Text(
+                        //             "Sign Up",
+                        //             style: TextStyle(
+                        //                 color: Color(0xFF424874),
+                        //                 fontWeight: FontWeight.w700),
+                        //           ),
+                        //         )
+                        //       ],
+                        //     ),
+                        //   ),
+                        // )
                       ],
                     ),
                   ),

@@ -27,9 +27,8 @@ abstract class LoginController extends State<SignInPage> {
     var jsonData;
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     try {
-      var response = await http.post(
-          "https://mamen-lancer.herokuapp.com/api/user/login",
-          body: data);
+      var response = await http
+          .post("http://13.229.135.254:3001/api/user/loginIPB", body: data);
       jsonData = json.decode(response.body);
       print(jsonData.toString());
       setState(() {
