@@ -18,7 +18,7 @@ class _MainPageState extends DashboardController {
           name = data['user']['name'];
           photo = data['user']['photo'] != ''
               ? data['user']['photo']
-              : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80";
+              : "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png";
           List<dynamic> fiveMyProjectList = data["CompleteFiveMyProject"];
           fiveMyProjectList.map((e) {
             print("e" + e.toString());
@@ -176,29 +176,41 @@ class _MainPageState extends DashboardController {
                             ),
                           ),
                           SizedBox(height: 16),
-                          Container(
-                              height: 188,
-                              width: double.infinity,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: Row(
-                                      children:
-                                          FiveMyProject.map((e) => Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: (e ==
-                                                            FiveMyProject.first)
-                                                        ? 16
-                                                        : 0,
-                                                    right: 16),
-                                                child: MyProjectCard(e),
-                                              )).toList(),
-                                    ),
-                                  )
-                                ],
-                              )),
+                          FiveMyProject.isEmpty
+                              ? Container(
+                                  height: 188,
+                                  width: double.infinity,
+                                  child: Center(
+                                      child: Text(
+                                          "You Haven't Create Any Project",
+                                          style: blueFontStyle2.copyWith(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w200,
+                                              color: mainColor))))
+                              : Container(
+                                  height: 188,
+                                  width: double.infinity,
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Row(
+                                          children:
+                                              FiveMyProject.map((e) => Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: (e ==
+                                                                FiveMyProject
+                                                                    .first)
+                                                            ? 16
+                                                            : 0,
+                                                        right: 16),
+                                                    child: MyProjectCard(e),
+                                                  )).toList(),
+                                        ),
+                                      )
+                                    ],
+                                  )),
                           SizedBox(height: 24),
                           Container(
                             width: MediaQuery.of(context).size.width - (2 * 16),
@@ -226,82 +238,101 @@ class _MainPageState extends DashboardController {
                               ],
                             ),
                           ),
-                          Container(
-                              height: 228,
-                              width: double.infinity,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  Row(
-                                    children: FiveNewProjects.map((e) =>
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                left:
-                                                    (e == FiveNewProjects.first)
-                                                        ? 16
-                                                        : 0,
-                                                right: 16),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                Get.to(DetailPage(id: e.id));
-                                              },
-                                              child: NewProjectCard(e),
-                                            ))).toList(),
-                                  ),
-                                ],
-                              )),
-                          SizedBox(height: 16),
-                          Container(
-                            width: MediaQuery.of(context).size.width - (2 * 16),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text("Pending",
-                                    style: blueFontStyle2.copyWith(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        color: mainColor)),
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.to(PendingProjectPage());
-                                  },
-                                  child: Text(
-                                    "see all",
-                                    style: blueFontStyle2.copyWith(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w200,
-                                        color: mainColor),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                              height: 188,
-                              width: double.infinity,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: Row(
-                                      children: mockPendingProject
-                                          .map((e) => Padding(
+                          FiveNewProjects.isEmpty
+                              ? Container(
+                                  height: 228,
+                                  width: double.infinity,
+                                  child: Center(
+                                      child: Text("There's No New Project",
+                                          style: blueFontStyle2.copyWith(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w200,
+                                              color: mainColor))))
+                              : Container(
+                                  height: 228,
+                                  width: double.infinity,
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: [
+                                      Row(
+                                        children: FiveNewProjects.map((e) =>
+                                            Padding(
                                                 padding: EdgeInsets.only(
                                                     left: (e ==
-                                                            mockPendingProject
+                                                            FiveNewProjects
                                                                 .first)
                                                         ? 16
                                                         : 0,
                                                     right: 16),
-                                                child: PendingProjectCard(e),
-                                              ))
-                                          .toList(),
-                                    ),
-                                  )
-                                ],
-                              )),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    Get.to(
+                                                        DetailPage(id: e.id));
+                                                  },
+                                                  child: NewProjectCard(e),
+                                                ))).toList(),
+                                      ),
+                                    ],
+                                  )),
+                          SizedBox(height: 16),
+                          FivePendingprojects.isEmpty
+                              ? Container()
+                              : Container(
+                                  width: MediaQuery.of(context).size.width -
+                                      (2 * 16),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text("Pending",
+                                          style: blueFontStyle2.copyWith(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: mainColor)),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Get.to(PendingProjectPage());
+                                        },
+                                        child: Text(
+                                          "see all",
+                                          style: blueFontStyle2.copyWith(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w200,
+                                              color: mainColor),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                          FivePendingprojects.isEmpty
+                              ? Container()
+                              : Container(
+                                  height: 188,
+                                  width: double.infinity,
+                                  child: ListView(
+                                    scrollDirection: Axis.horizontal,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Row(
+                                          children: mockPendingProject
+                                              .map((e) => Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: (e ==
+                                                                mockPendingProject
+                                                                    .first)
+                                                            ? 16
+                                                            : 0,
+                                                        right: 16),
+                                                    child:
+                                                        PendingProjectCard(e),
+                                                  ))
+                                              .toList(),
+                                        ),
+                                      )
+                                    ],
+                                  )),
                           SizedBox(height: 36),
                         ],
                       ),

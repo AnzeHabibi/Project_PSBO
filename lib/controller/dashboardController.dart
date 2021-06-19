@@ -26,8 +26,8 @@ abstract class DashboardController extends State<MainPage> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     try {
-      var response = await http
-          .get("https://mamen-lancer.herokuapp.com/api/dashboard", headers: {
+      var response =
+          await http.get("http://13.229.135.254:3001/api/dashboard", headers: {
         'Authorization': 'Bearer $token',
       });
       Map<String, dynamic> map = json.decode(response.body);
