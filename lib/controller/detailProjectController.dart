@@ -28,7 +28,7 @@ abstract class DetailProjectController extends State<DetailPage> {
     var token = sharedPreferences.getString('token');
     try {
       var response = await http
-          .get("https://mamen-lancer.herokuapp.com/api/project/$id", headers: {
+          .get("http://13.229.135.254:3001/api/project/$id", headers: {
         'Authorization': 'Bearer $token',
       });
       var map = json.decode(response.body);

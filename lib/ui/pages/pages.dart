@@ -6,6 +6,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:project_psbo/controller/createProjectController.dart';
 import 'package:project_psbo/controller/dashboardController.dart';
 import 'package:project_psbo/controller/detailProjectController.dart';
+import 'package:project_psbo/controller/editProjectController.dart';
 import 'package:project_psbo/controller/myProjectController.dart';
 import 'package:project_psbo/controller/newProjectController.dart';
 import 'package:project_psbo/controller/showProfileController.dart';
@@ -34,3 +35,4 @@ part 'new_project_page.dart';
 part 'my_project_page.dart';
 part 'pending_project_page.dart';
 part 'upload_post.dart';
+part 'editProject_page.dart';

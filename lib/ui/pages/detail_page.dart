@@ -12,6 +12,8 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends DetailProjectController {
   var dataProject;
   var dataPhotoProject;
+  DateTime startDate;
+  DateTime now = DateTime.now();
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -19,6 +21,7 @@ class _DetailPageState extends DetailProjectController {
         setState(() {
           dataProject = data;
           dataPhotoProject = dataProject['project']['photos'];
+          startDate = DateTime.parse(dataProject['project']['startDate']);
           isLoadingFalse();
         });
       });
@@ -48,7 +51,7 @@ class _DetailPageState extends DetailProjectController {
                                           ['photos'] !=
                                       []
                                   ? dataProject['project']['photos'][0]['photo']
-                                  : "https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"),
+                                  : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"),
                               fit: BoxFit.cover)),
                     ),
                     ListView(
@@ -130,7 +133,7 @@ class _DetailPageState extends DetailProjectController {
                                                       ? dataProject['project']
                                                               ['projectManager']
                                                           ['photo']
-                                                      : "https://images.unsplash.com/photo-1524638431109-93d95c968f03?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"),
+                                                      : "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png"),
                                                   fit: BoxFit.cover)),
                                         ),
                                         SizedBox(width: 12),
@@ -170,7 +173,7 @@ class _DetailPageState extends DetailProjectController {
                                             fontWeight: FontWeight.w600)),
                                     SizedBox(height: 8),
                                     Container(
-                                        height: 90,
+                                        height: 100,
                                         child: ListView(
                                           scrollDirection: Axis.horizontal,
                                           children: dataPhotoProject
@@ -180,71 +183,42 @@ class _DetailPageState extends DetailProjectController {
                                                       child: photoWidget(
                                                           e['photo'])))
                                               .toList(),
-                                          // Container(
-                                          //   height: 100,
-                                          //   width: 110,
-                                          //   decoration: BoxDecoration(
-                                          //     borderRadius:
-                                          //         BorderRadius.circular(18),
-                                          //     image: DecorationImage(
-                                          //         image: NetworkImage(
-                                          //             "https://images.unsplash.com/photo-1600697395780-1cf7ab1fef5b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"),
-                                          //         fit: BoxFit.cover),
-                                          //   ),
-                                          // ),
-                                          // SizedBox(width: 12),
-                                          // Container(
-                                          //   height: 100,
-                                          //   width: 110,
-                                          //   decoration: BoxDecoration(
-                                          //     borderRadius:
-                                          //         BorderRadius.circular(18),
-                                          //     image: DecorationImage(
-                                          //         image: NetworkImage(
-                                          //             "https://images.unsplash.com/photo-1612772992614-bc2c2a2c3362?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"),
-                                          //         fit: BoxFit.cover),
-                                          //   ),
-                                          // ),
-                                          // SizedBox(width: 12),
-                                          // Container(
-                                          //   height: 100,
-                                          //   width: 110,
-                                          //   decoration: BoxDecoration(
-                                          //     borderRadius:
-                                          //         BorderRadius.circular(18),
-                                          //     image: DecorationImage(
-                                          //         image: NetworkImage(
-                                          //             "https://images.unsplash.com/photo-1533750088811-7a8b16218df7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"),
-                                          //         fit: BoxFit.cover),
-                                          //   ),
-                                          // ),
                                         )),
                                   ],
                                 ),
                               ),
                               SizedBox(height: 40),
-                              Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 16),
-                                  width: MediaQuery.of(context).size.width -
-                                      (2 * 16),
-                                  height: 50,
-                                  child: RaisedButton(
-                                    onPressed: () {
-                                      Get.to(RegistrantPage());
-                                    },
-                                    child: Text("Join Project",
-                                        style: whiteFontStyle.copyWith(
-                                          fontSize: 18,
-                                        )),
-                                    color: mainColor,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(18)),
-                                  ),
-                                ),
-                              ),
+                              dataProject['typeMember'] == 3
+                                  ? (startDate.isAfter(now))
+                                      ? btnParticipant()
+                                      : btnMember()
+                                  : dataProject['typeMember'] == 2
+                                      ? btnMember()
+                                      : dataProject['typeMember'] == 1
+                                          ? btnAssigned()
+                                          : btnAssigned(),
+                              // Align(
+                              //   alignment: Alignment.bottomCenter,
+                              //   child: Container(
+                              //     margin: EdgeInsets.symmetric(horizontal: 16),
+                              //     width: MediaQuery.of(context).size.width -
+                              //         (2 * 16),
+                              //     height: 50,
+                              //     child: RaisedButton(
+                              //       onPressed: () {
+                              //         Get.to(RegistrantPage());
+                              //       },
+                              //       child: Text("Join Project",
+                              //           style: whiteFontStyle.copyWith(
+                              //             fontSize: 18,
+                              //           )),
+                              //       color: mainColor,
+                              //       shape: RoundedRectangleBorder(
+                              //           borderRadius:
+                              //               BorderRadius.circular(18)),
+                              //     ),
+                              //   ),
+                              // ),
                               SizedBox(height: 40),
                             ],
                           ),
@@ -252,11 +226,38 @@ class _DetailPageState extends DetailProjectController {
                       ],
                     ),
                     Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(MainPage());
+                        },
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    spreadRadius: 3,
+                                    blurRadius: 15,
+                                    color: Colors.black12)
+                              ],
+                              image: DecorationImage(
+                                  image: AssetImage("assets/btn_back.png"),
+                                  fit: BoxFit.cover)),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(MainPage());
+                            Get.to(EditProject(
+                              dataProject: dataProject['project'],
+                            ));
                           },
                           child: Container(
                             width: 50,
@@ -269,10 +270,12 @@ class _DetailPageState extends DetailProjectController {
                                       color: Colors.black12)
                                 ],
                                 image: DecorationImage(
-                                    image: AssetImage("assets/btn_back.png"),
+                                    image: AssetImage("assets/btn_edit.png"),
                                     fit: BoxFit.cover)),
                           ),
-                        ))
+                        ),
+                      ),
+                    ),
                   ],
                 )),
           );
@@ -315,10 +318,35 @@ Widget btnAssign() {
             ),
           ),
         ),
-        onPressed: () {
-          
-        },
+        onPressed: () {},
         color: Color(0xFF1D2A64),
+      ),
+    ),
+  );
+}
+
+Widget btnAssigned() {
+  return Align(
+    alignment: FractionalOffset.bottomCenter,
+    child: Padding(
+      padding: const EdgeInsets.only(right: 16, left: 16, bottom: 16),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: Container(
+          width: 400,
+          height: 50,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
+            child: Text(
+              "On Pending",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        onPressed: null,
+        color: Color(0xFF1DAD2B),
       ),
     ),
   );
@@ -344,8 +372,7 @@ Widget btnMember() {
             ),
           ),
         ),
-        onPressed: () {
-        },
+        onPressed: () {},
         color: Color(0xFF1DAD2B),
       ),
     ),
@@ -366,14 +393,13 @@ Widget btnParticipant() {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
             child: Text(
-              "See Pasrticipant",
+              "See Participant",
               style: TextStyle(color: Colors.white, fontSize: 16),
               textAlign: TextAlign.center,
             ),
           ),
         ),
-        onPressed: () {
-        },
+        onPressed: () {},
         color: Color(0xFF696969),
       ),
     ),
