@@ -34,6 +34,7 @@ dependencies:
   shared_preferences: ^2.0.5
   supercharged: ^1.12.0
   file_picker: ^2.1.7
+  keyboard_visibility: ^0.5.6
 
 dev_dependencies:
   flutter_test:

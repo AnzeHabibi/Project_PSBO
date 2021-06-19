@@ -35,7 +35,7 @@ abstract class CreateProjectController extends State<UploadPost> {
           await SharedPreferences.getInstance();
       var token = sharedPreferences.getString('token');
       var request = http.MultipartRequest(
-          "POST", Uri.parse("https://mamen-lancer.herokuapp.com/api/project/"));
+          "POST", Uri.parse("http://13.229.135.254:3001/api/project/"));
       //add text fields
       //print("photo2");
       request.fields['title'] = titleProject;

@@ -8,6 +8,18 @@ class UploadPost extends StatefulWidget {
 class _UploadPost extends CreateProjectController {
   File _image;
   DateTimeRange dateRange;
+  String imageNameFile = '';
+  bool keyboardOpen = false;
+
+  @override
+  void initState() {
+    super.initState();
+    KeyboardVisibilityNotification().addNewListener(
+      onChange: (bool visible) {
+        setState(() => keyboardOpen = visible);
+      },
+    );
+  }
 
   void _showPicker(context) {
     showModalBottomSheet(
@@ -37,6 +49,7 @@ class _UploadPost extends CreateProjectController {
 
     setState(() {
       _image = image;
+      imageNameFile = basename(image.path);
     });
   }
 
@@ -81,7 +94,8 @@ class _UploadPost extends CreateProjectController {
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 64),
                   children: [_mainContent()],
                 )),
-                floatingActionButton: _buttonBottom(),
+                floatingActionButton:
+                    keyboardOpen ? SizedBox() : _buttonBottom(),
                 floatingActionButtonLocation:
                     FloatingActionButtonLocation.centerDocked),
           );
@@ -198,7 +212,7 @@ class _UploadPost extends CreateProjectController {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 0, 0, 12),
-                    child: Text("Caption", style: blueFontStyle2),
+                    child: Text("Description", style: blueFontStyle2),
                   ),
                   Container(
                     child: TextField(
@@ -210,7 +224,7 @@ class _UploadPost extends CreateProjectController {
                         errorText: _validateEmail
                             ? 'Inputan tidak\'bisa kosong'
                             : null,
-                        hintText: "Input caption",
+                        hintText: "Input Description",
                         hintStyle: TextStyle(
                           color: Color(0xFFD2D9DF),
                           fontSize: 12,
@@ -271,7 +285,7 @@ class _UploadPost extends CreateProjectController {
                                 ),
                               ),
                               GestureDetector(onTap: () {
-                                pickDateRange(context);
+                                pickDateRange(this.context);
                               })
                             ],
                           ),
@@ -316,7 +330,10 @@ class _UploadPost extends CreateProjectController {
                               alignment: Alignment.centerLeft,
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
-                                child: Text("Upload Photo Here",
+                                child: Text(
+                                    imageNameFile == ''
+                                        ? "Upload Photo Here"
+                                        : imageNameFile,
                                     style: blackFontStyle3),
                               ),
                             ),
@@ -346,7 +363,7 @@ class _UploadPost extends CreateProjectController {
                                             color: Colors.white, fontSize: 16)),
                                   ),
                                   GestureDetector(onTap: () {
-                                    _showPicker(context);
+                                    _showPicker(this.context);
                                   })
                                 ],
                               ),

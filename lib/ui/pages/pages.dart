@@ -18,6 +18,8 @@ import 'package:project_psbo/ui/widgets/widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:intl/intl.dart';
+import 'package:path/path.dart';
+import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 part 'sign_up.dart';
 part 'sign_in.dart';
