@@ -10,7 +10,7 @@ class EditProject extends StatefulWidget {
 }
 
 class _EditProject extends EditProjectController {
-  File _image;
+  List<File> _image = [];
   DateTimeRange dateRange;
   String imageNameFile = '';
   bool keyboardOpen = false;
@@ -46,8 +46,23 @@ class _EditProject extends EditProjectController {
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
                       title: new Text('Photo Library'),
-                      onTap: () {
-                        _imgFromGallery();
+                      onTap: () async {
+                        FilePickerResult result =
+                            await FilePicker.platform.pickFiles(
+                          allowMultiple: true,
+                          type: FileType.custom,
+                          allowedExtensions: ['jpg', 'png'],
+                        );
+
+                        if (result != null) {
+                          List<File> files =
+                              result.paths.map((path) => File(path)).toList();
+                          setState(() {
+                            _image.addAll(files);
+                          });
+                        } else {
+                          // User canceled the picker
+                        }
                         Navigator.of(context).pop();
                       }),
                 ],
@@ -55,16 +70,6 @@ class _EditProject extends EditProjectController {
             ),
           );
         });
-  }
-
-  _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(
-        source: ImageSource.gallery, imageQuality: 50);
-
-    setState(() {
-      _image = image;
-      imageNameFile = basename(image.path);
-    });
   }
 
   String setDate() {
@@ -119,29 +124,35 @@ class _EditProject extends EditProjectController {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          _backButton(),
-          _titleProject(dataToBeEdited['title']),
-          _caption(),
-          _startDeadline(),
-          _addPhoto(),
-          SizedBox(height: 8),
-          Container(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _backButton(),
+            _titleProject(dataToBeEdited['title']),
+            _caption(),
+            _startDeadline(),
+            _addPhoto(),
+            SizedBox(height: 8),
+            Container(
               height: 100,
               child: ListView(scrollDirection: Axis.horizontal, children: [
-                dataToBeEdited['photos']
-                    .map<Widget>((e) => GestureDetector(
-                        onTap: () {}, child: photoWidget(e['photo'])))
-                    .toList(),
-                _image
-                    .map<Widget>((e) => GestureDetector(
-                        onTap: () {}, child: photoWidget(e['photo'])))
-                    .toList(),
-              ])),
-        ],
-      ),
+                Row(
+                  children: dataToBeEdited['photos']
+                      .map<Widget>((e) => GestureDetector(
+                          onTap: () {}, child: photoWidgetFromLink(e['photo'])))
+                      .toList(),
+                ),
+                Row(
+                  children: _image
+                          ?.map<Widget>((e) => GestureDetector(
+                              onTap: () {},
+                              child: photoWidgetFromStorage(e.path)))
+                          ?.toList() ??
+                      [],
+                )
+              ]),
+            )
+          ]),
     );
   }
 
@@ -423,14 +434,14 @@ class _EditProject extends EditProjectController {
               setState(() {
                 if (!caption.text.isEmpty && !titleProject.text.isEmpty) {
                   isLoadingTrue();
-                  createProject(
-                      titleProject.text,
-                      caption.text,
-                      DateFormat('yyyy-MM-dd')
-                          .format(dateRange.start)
-                          .toString(),
-                      DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
-                      _image);
+                  // createProject(
+                  //     titleProject.text,
+                  //     caption.text,
+                  //     DateFormat('yyyy-MM-dd')
+                  //         .format(dateRange.start)
+                  //         .toString(),
+                  //     DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
+                  //     _image);
                 }
               });
             },
