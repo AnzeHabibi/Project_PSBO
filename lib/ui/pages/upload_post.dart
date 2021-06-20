@@ -409,15 +409,15 @@ class _UploadPost extends CreateProjectController {
             onPressed: () {
               setState(() {
                 if (!caption.text.isEmpty && !titleProject.text.isEmpty) {
-                  //   isLoadingTrue();
-                  //   createProject(
-                  //       titleProject.text,
-                  //       caption.text,
-                  //       DateFormat('yyyy-MM-dd')
-                  //           .format(dateRange.start)
-                  //           .toString(),
-                  //       DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
-                  //       _image);
+                  isLoadingTrue();
+                  createProject(
+                      titleProject.text,
+                      caption.text,
+                      DateFormat('yyyy-MM-dd')
+                          .format(dateRange.start)
+                          .toString(),
+                      DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
+                      _image);
                 }
               });
             },

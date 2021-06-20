@@ -26,7 +26,7 @@ abstract class CreateProjectController extends State<UploadPost> {
     String caption,
     String startDate,
     String endDate,
-    File photo,
+    List<File> photo,
   ) async {
     try {
       print(startDate + '=' + endDate);
@@ -47,14 +47,15 @@ abstract class CreateProjectController extends State<UploadPost> {
         "Content-type": "multipart/form-data",
         "Authorization": "Bearer $token"
       };
-      var pic = await http.MultipartFile.fromPath(
-        "photos",
-        photo.path,
-        contentType: MediaType('image', 'jpeg'),
-      );
       request.headers.addAll(headers);
-      //add multipart to request
-      request.files.add(pic);
+      photo
+          .map((e) async => request.files.add(await http.MultipartFile.fromPath(
+                "photos",
+                e.path,
+                contentType: MediaType('image', 'jpeg'),
+              )))
+          .toList();
+
       print("request: " + request.toString());
 
       var response = await request.send();
