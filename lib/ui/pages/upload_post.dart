@@ -6,7 +6,7 @@ class UploadPost extends StatefulWidget {
 }
 
 class _UploadPost extends CreateProjectController {
-  File _image;
+  List<File> _image = [];
   DateTimeRange dateRange;
   String imageNameFile = '';
   bool keyboardOpen = false;
@@ -32,8 +32,23 @@ class _UploadPost extends CreateProjectController {
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
                       title: new Text('Photo Library'),
-                      onTap: () {
-                        _imgFromGallery();
+                      onTap: () async {
+                        FilePickerResult result =
+                            await FilePicker.platform.pickFiles(
+                          allowMultiple: true,
+                          type: FileType.custom,
+                          allowedExtensions: ['jpg', 'png'],
+                        );
+
+                        if (result != null) {
+                          List<File> files =
+                              result.paths.map((path) => File(path)).toList();
+                          setState(() {
+                            _image.addAll(files);
+                          });
+                        } else {
+                          // User canceled the picker
+                        }
                         Navigator.of(context).pop();
                       }),
                 ],
@@ -41,16 +56,6 @@ class _UploadPost extends CreateProjectController {
             ),
           );
         });
-  }
-
-  _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(
-        source: ImageSource.gallery, imageQuality: 50);
-
-    setState(() {
-      _image = image;
-      imageNameFile = basename(image.path);
-    });
   }
 
   String setDate() {
@@ -91,7 +96,7 @@ class _UploadPost extends CreateProjectController {
                 backgroundColor: Color(0xFFFBFBFB),
                 body: SafeArea(
                     child: ListView(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 64),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 120),
                   children: [_mainContent()],
                 )),
                 floatingActionButton:
@@ -113,6 +118,17 @@ class _UploadPost extends CreateProjectController {
           _caption(),
           _startDeadline(),
           _addPhoto(),
+          SizedBox(height: 16),
+          Container(
+              height: 146,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: _image
+                        ?.map<Widget>((e) => GestureDetector(
+                            onTap: () {}, child: photoWidgetFromStorage(e)))
+                        ?.toList() ??
+                    [],
+              )),
         ],
       ),
     );
@@ -393,15 +409,15 @@ class _UploadPost extends CreateProjectController {
             onPressed: () {
               setState(() {
                 if (!caption.text.isEmpty && !titleProject.text.isEmpty) {
-                  isLoadingTrue();
-                  createProject(
-                      titleProject.text,
-                      caption.text,
-                      DateFormat('yyyy-MM-dd')
-                          .format(dateRange.start)
-                          .toString(),
-                      DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
-                      _image);
+                  //   isLoadingTrue();
+                  //   createProject(
+                  //       titleProject.text,
+                  //       caption.text,
+                  //       DateFormat('yyyy-MM-dd')
+                  //           .format(dateRange.start)
+                  //           .toString(),
+                  //       DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
+                  //       _image);
                 }
               });
             },
@@ -422,6 +438,48 @@ class _UploadPost extends CreateProjectController {
           ),
         ),
       ),
+    );
+  }
+
+  Widget photoWidgetFromStorage(File file) {
+    return Column(
+      children: [
+        Container(
+          height: 100,
+          width: 110,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            image: DecorationImage(
+                image: FileImage(File(file.path)), fit: BoxFit.cover),
+          ),
+        ),
+        SizedBox(width: 12),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                _image.remove(file);
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                children: [
+                  Container(
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage("assets/btn_delete_x.png"),
+                    )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

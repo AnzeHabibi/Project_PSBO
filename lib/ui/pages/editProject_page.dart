@@ -110,7 +110,7 @@ class _EditProject extends EditProjectController {
                 backgroundColor: Color(0xFFFBFBFB),
                 body: SafeArea(
                     child: ListView(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 64),
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 120),
                   children: [_mainContent()],
                 )),
                 floatingActionButton:
@@ -134,7 +134,7 @@ class _EditProject extends EditProjectController {
             _addPhoto(),
             SizedBox(height: 8),
             Container(
-              height: 100,
+              height: 146,
               child: ListView(scrollDirection: Axis.horizontal, children: [
                 Row(
                   children: dataToBeEdited['photos']
@@ -145,8 +145,7 @@ class _EditProject extends EditProjectController {
                 Row(
                   children: _image
                           ?.map<Widget>((e) => GestureDetector(
-                              onTap: () {},
-                              child: photoWidgetFromStorage(e.path)))
+                              onTap: () {}, child: photoWidgetFromStorage(e)))
                           ?.toList() ??
                       [],
                 )
@@ -175,7 +174,7 @@ class _EditProject extends EditProjectController {
                   image: AssetImage("assets/btn_back_2.png"),
                 )),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: 16),
               Text("Back", style: blueFontStyle4),
             ],
           ),
@@ -482,7 +481,7 @@ class _EditProject extends EditProjectController {
     );
   }
 
-  Widget photoWidgetFromStorage(String path) {
+  Widget photoWidgetFromStorage(File file) {
     return Column(
       children: [
         Container(
@@ -491,10 +490,35 @@ class _EditProject extends EditProjectController {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             image: DecorationImage(
-                image: FileImage(File(path)), fit: BoxFit.cover),
+                image: FileImage(File(file.path)), fit: BoxFit.cover),
           ),
         ),
         SizedBox(width: 12),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                _image.remove(file);
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                children: [
+                  Container(
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage("assets/btn_delete_x.png"),
+                    )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
