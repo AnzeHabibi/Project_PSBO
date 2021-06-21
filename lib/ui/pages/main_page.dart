@@ -115,10 +115,17 @@ class _MainPageState extends DashboardController {
                                         style: blueFontStyle1.copyWith(
                                             fontSize: 24,
                                             fontWeight: FontWeight.w400)),
-                                    Text(name.toString(),
-                                        style: blueFontStyle1.copyWith(
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.w900)),
+                                    Container(
+                                      constraints:
+                                          new BoxConstraints(maxWidth: 250),
+                                      child: Text(name.toString(),
+                                          overflow: TextOverflow.clip,
+                                          maxLines: 2,
+                                          softWrap: true,
+                                          style: blueFontStyle1.copyWith(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.w900)),
+                                    ),
                                   ],
                                 ),
                                 GestureDetector(

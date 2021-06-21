@@ -42,8 +42,8 @@ abstract class ShowProfileController extends State<MyProfilePage> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     var token = sharedPreferences.getString('token');
     try {
-      var response = await http
-          .get("https://mamen-lancer.herokuapp.com/api/user/auth", headers: {
+      var response =
+          await http.get("http://13.229.135.254:3001/api/user/auth", headers: {
         'Authorization': 'Bearer $token',
       });
       var map = json.decode(response.body);
