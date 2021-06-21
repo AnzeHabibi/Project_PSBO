@@ -47,10 +47,8 @@ class _DetailPageState extends DetailProjectController {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(dataProject['project']
-                                          ['photos'] !=
-                                      []
-                                  ? dataProject['project']['photos'][0]['photo']
+                              image: NetworkImage(dataProject['project']['photos'].length != 0 ?
+                                   dataProject['project']['photos'][0]['photo']
                                   : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"),
                               fit: BoxFit.cover)),
                     ),

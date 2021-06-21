@@ -56,7 +56,7 @@ class _MainPageState extends DashboardController {
                   name: e['title'],
                   description: "dari API",
                   id: e['id'],
-                  picturePath: e['photos'] != []
+                  picturePath: e['photos'].length != 0
                       ? e['photos'][0]['photo']
                       : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
                   start: "Start",
@@ -66,7 +66,7 @@ class _MainPageState extends DashboardController {
                   name: e['title'],
                   description: "dari API",
                   id: e['id'],
-                  picturePath: e['photos'] != []
+                  picturePath: e['photos'].length != 0
                       ? e['photos'][0]['photo']
                       : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
                   start: "Start",

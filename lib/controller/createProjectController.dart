@@ -44,7 +44,7 @@ abstract class CreateProjectController extends State<UploadPost> {
       request.fields['startDate'] = startDate;
       //create multipart using filepath, string or bytes
       Map<String, String> headers = {
-        "Content-type": "multipart/form-data",
+        "Content-type": "*/*",
         "Authorization": "Bearer $token"
       };
       request.headers.addAll(headers);

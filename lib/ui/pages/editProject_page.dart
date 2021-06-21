@@ -11,10 +11,14 @@ class EditProject extends StatefulWidget {
 
 class _EditProject extends EditProjectController {
   List<File> _image = [];
+  List<dynamic> oldImage = [];
   DateTimeRange dateRange;
   String imageNameFile = '';
   bool keyboardOpen = false;
   var dataToBeEdited;
+
+  TextEditingController titleProject;
+  TextEditingController caption;
 
   @override
   void initState() {
@@ -27,7 +31,11 @@ class _EditProject extends EditProjectController {
       },
     );
     setState(() {
+      oldImage = List.from(widget.dataProject['photos']);
+      print(widget.dataProject['photos'].toString());
       dataToBeEdited = widget.dataProject;
+      titleProject = new TextEditingController(text: dataToBeEdited['title']);
+      caption = new TextEditingController(text: dataToBeEdited['description']);
       dateRange = DateTimeRange(
         start: DateTime.parse(dataToBeEdited['startDate']),
         end: DateTime.parse(dataToBeEdited['endDate']),
@@ -127,8 +135,39 @@ class _EditProject extends EditProjectController {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _backButton(),
-            _titleProject(dataToBeEdited['title']),
+            Row(
+              children: [
+                _backButton(),
+                Expanded(child: Container()),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                    child: GestureDetector(
+                      onTap: () {
+                        showAlertDialog(this.context, dataToBeEdited['id']);
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  spreadRadius: 3,
+                                  blurRadius: 15,
+                                  color: Colors.black12)
+                            ],
+                            image: DecorationImage(
+                                image:
+                                    AssetImage("assets/btn_delete_trash.png"),
+                                fit: BoxFit.cover)),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            _titleProject(),
             _caption(),
             _startDeadline(),
             _addPhoto(),
@@ -137,9 +176,9 @@ class _EditProject extends EditProjectController {
               height: 146,
               child: ListView(scrollDirection: Axis.horizontal, children: [
                 Row(
-                  children: dataToBeEdited['photos']
+                  children: oldImage
                       .map<Widget>((e) => GestureDetector(
-                          onTap: () {}, child: photoWidgetFromLink(e['photo'])))
+                          onTap: () {}, child: photoWidgetFromLink(e)))
                       .toList(),
                 ),
                 Row(
@@ -183,9 +222,7 @@ class _EditProject extends EditProjectController {
     );
   }
 
-  TextEditingController titleProject;
-  Widget _titleProject(String title) {
-    titleProject = new TextEditingController(text: dataToBeEdited['title']);
+  Widget _titleProject() {
     return Container(
         margin: EdgeInsets.fromLTRB(0, 16, 0, 0),
         child: Column(
@@ -237,9 +274,7 @@ class _EditProject extends EditProjectController {
         ));
   }
 
-  TextEditingController caption;
   Widget _caption() {
-    caption = new TextEditingController(text: dataToBeEdited['description']);
     return Container(
         margin: EdgeInsets.fromLTRB(0, 16, 0, 0),
         child: Column(
@@ -433,14 +468,16 @@ class _EditProject extends EditProjectController {
               setState(() {
                 if (!caption.text.isEmpty && !titleProject.text.isEmpty) {
                   isLoadingTrue();
-                  // createProject(
-                  //     titleProject.text,
-                  //     caption.text,
-                  //     DateFormat('yyyy-MM-dd')
-                  //         .format(dateRange.start)
-                  //         .toString(),
-                  //     DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
-                  //     _image);
+                  editProject(
+                      widget.dataProject['id'],
+                      titleProject.text,
+                      caption.text,
+                      DateFormat('yyyy-MM-dd')
+                          .format(dateRange.start)
+                          .toString(),
+                      DateFormat('yyyy-MM-dd').format(dateRange.end).toString(),
+                      oldImage,
+                      _image);
                 }
               });
             },
@@ -452,7 +489,7 @@ class _EditProject extends EditProjectController {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
                 child: Text(
-                  "Publish Project",
+                  "Update Project",
                   style: TextStyle(color: Colors.white, fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
@@ -464,7 +501,7 @@ class _EditProject extends EditProjectController {
     );
   }
 
-  Widget photoWidgetFromLink(String link) {
+  Widget photoWidgetFromLink(var image) {
     return Column(
       children: [
         Container(
@@ -472,11 +509,38 @@ class _EditProject extends EditProjectController {
           width: 110,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
-            image:
-                DecorationImage(image: NetworkImage(link), fit: BoxFit.cover),
+            image: DecorationImage(
+                image: NetworkImage(image["photo"]), fit: BoxFit.cover),
           ),
         ),
         SizedBox(width: 12),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                oldImage.remove(image);
+                print(oldImage);
+                print(widget.dataProject['photos']);
+              });
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                children: [
+                  Container(
+                    width: 30,
+                    height: 30,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage("assets/btn_delete_x.png"),
+                    )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -520,6 +584,40 @@ class _EditProject extends EditProjectController {
           ),
         ),
       ],
+    );
+  }
+
+  showAlertDialog(BuildContext context, String id) {
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Cancel"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = FlatButton(
+      child: Text("Delete"),
+      onPressed: () {
+        deleteProject(id);
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Delete Project"),
+      content: Text("Are you sure you want to delete this project?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
