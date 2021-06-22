@@ -1,11 +1,13 @@
 
 # Project_PSBO
 Nama Sistem : Gofind<br />
-Paralel Praktkum : P1<br />
+Paralel Praktikum : P1<br />
 Nomor Kelompok : 03<br />
 
-# Deskripsi Aplikasi 
-Kami ingin membuat ide atau solusi yang dimana user bisa memperlihatkan track record serta keahlian yang mereka miliki untuk bisa ikut dalam sebuah proyek nyata. User bisa memasukan social media dan cv yang berupa link sehingga user lain bisa langsung melihat social media dan cv nya secara langsung. User juga bisa membuat projek dengan memasukan deskripsi, start-deadline serta photo untuk memperlihatkan informasi lengkap proyek yang ingin diikuti. User juga bisa memilih orang yang sesuai dengan kriteria yang user inginkan dengan cara melihat role, specialist, social media, cv serta track record dari proyek apa saja yang diikuti. User yang ingin membuat proyek atau mengikuti proyek tidak dibatasi dengan jurusan atau departemen tertentu, user bisa membuat atau mengikuti proyek apapun tanpa terpaku dengan jurusan atau departemen tertentu. Namun user hanya dapat berada dalam satu projek dalam satu waktu. Dengan adanya solusi tersebut, diharapkan user dapat meningkatkan kualitas kemampuannya dan memperbanyak pengalaman mereka.
+## Deskripsi Aplikasi 
+Aplikasi Gofind merupakan aplikasi yang digunakan untuk mencari projek ataupun anggota tim untuk projeknya. Berawal dari kebutuhan mahasiswa khususnya mahasiswa IPB yang kesulitan untuk mencari partner dalam menjalankan projeknya. selain itu terdapat mahasiswa yang juga kesulitan mencari proyek yang sesuai untuk pengembangan dirinya. melalui aplikasi ini, diharapkan banyak mahasiswa terbantu untuk mencari dan mendapatkan projek atau partner tim yang sesuai dengan keinginannya masing-masing.
+
+Pada aplikasi ini, user bisa memperlihatkan track record serta keahlian yang mereka miliki untuk bisa ikut dalam sebuah proyek nyata. Selain itu, user juga bisa memasukan media sosial dan CV sehingga user lain bisa langsung melihat social media dan CV-nya secara langsung. User juga bisa membuat projek dengan memasukan judul, deskripsi, waktu pembukaan lowongan projek, dan foto untuk memperlihatkan informasi lengkap proyek. Selanjutnya, user juga bisa memilih orang yang sesuai dengan kriteria yang diinginkan untuk menjadi anggota tim projeknya dengan cara melihat role, specialist, social media, cv serta track record dari orang tersebut. User bisa membuat atau mengikuti proyek apapun tanpa terpaku dengan jurusan atau departemen tertentu. Namun user hanya dapat berada dalam satu projek dalam satu waktu. Dengan adanya solusi tersebut, diharapkan user dapat meningkatkan kualitas kemampuannya dan memperbanyak pengalaman mereka.
 
 ## User Analysis
 ### User Story
@@ -14,7 +16,7 @@ Kami ingin membuat ide atau solusi yang dimana user bisa memperlihatkan track re
 
 ## Spesifikasi teknis lingkungan pengembangan
 ### Software
-![enter image description here](https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/192647828_350186593197721_8066950454003592681_n.png?_nc_cat=103&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGPTj6WD-XV0RKsPUJMasCGflueE4t0Zox-W54Ti3RmjN9r6CIfGDZwGMP0VwrIFcGp4dxjWdmoaDVaj6lGe7ds&_nc_ohc=-a1SxhVI6aIAX8BoG24&_nc_ht=scontent-sin6-2.xx&oh=3fe1a5df7e2c008ef12b0db9730b4c9c&oe=60DBF9B2)
+![software pengembangan GoFind](https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/192647828_350186593197721_8066950454003592681_n.png?_nc_cat=103&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGPTj6WD-XV0RKsPUJMasCGflueE4t0Zox-W54Ti3RmjN9r6CIfGDZwGMP0VwrIFcGp4dxjWdmoaDVaj6lGe7ds&_nc_ohc=-a1SxhVI6aIAX8BoG24&_nc_ht=scontent-sin6-2.xx&oh=3fe1a5df7e2c008ef12b0db9730b4c9c&oe=60DBF9B2)
 ### Hardware
 -   **Nama:**  Samsung Galaxy A11
 -   **Berat:** 177 gram (g)
