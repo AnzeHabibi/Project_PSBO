@@ -130,11 +130,13 @@ Fungsi utama yang dikembangkan adalah pembuatan projek yang dibuat oleh pengguna
 ### Pemakaian JWT
 Strukur yang kami gunakan dibagi menjadi tiga bagian. Yang pertama ada Header dimana tipe JWT didefinisikan dan kami menggunakan hash hs256. Yang kedua ada Payload dimana ada loggedIn dan juga iat . Yang ketiga ada signatur yang berupa pengimplementasian header dan payload menggunakan HMAC-SHA256. JWT Identifier tidak diacak dan static disimpan di env. JWt akan expired setelah 12 jam. 
 
-Foto Stuktur
+![Struktur](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/206164060_2827259817588450_6004925227404836476_n.png?_nc_cat=106&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeHyHVqmkQL7HX7rCpQK6-NRbEJMtGWo_-VsQky0Zaj_5a-Spo4vcGp-9XjpZE8oF6G6YuSaTmNHgcDhPqk8n3ED&_nc_ohc=MfOZsxR6EbUAX8lSOw-&tn=xAo5jjmYoiaU7dPL&_nc_ht=scontent.fcgk18-2.fna&oh=fe0cb7f0c98e6d70a0182773894ea679&oe=60D8C09F)
 
 Berikut kode implementasi dari JWT pada sistem kami: 
 
-Foto Kode
+![code1](https://scontent.fcgk18-1.fna.fbcdn.net/v/t1.15752-9/203606526_162275562594844_7187699351144938229_n.png?_nc_cat=109&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeFX9wJARnpF9Bs7ArpCwwVbf_jXlAmRIEJ_-NeUCZEgQkGgooqdnI-gKz3EVUZgYP-PzNZKYuD1tgYg0gTL7b8J&_nc_ohc=J8rLJQsrfR0AX_rT_bp&tn=xAo5jjmYoiaU7dPL&_nc_ht=scontent.fcgk18-1.fna&oh=655298cf293bb611154ef04c4a902dd3&oe=60D884BC)
+
+![code2](https://scontent.fcgk18-1.fna.fbcdn.net/v/t1.15752-9/203891877_306015877929573_1228645463848263794_n.png?_nc_cat=101&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeG0wD8GUcpHYsg2VNawN8AWKHjsVyfWfe8oeOxXJ9Z976D5G6wRX9gcRCOBOJ7vVsXbtSefrdWZVg1E-eReFJxF&_nc_ohc=4lvkEN6vjE4AX_Ow7zd&_nc_ht=scontent.fcgk18-1.fna&oh=fe1ffc1de581a9cf89a9b847acc80488&oe=60D8DCDE)
 
 ### Screenshot sistem
 ![Implementasi Sistem](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/p2048x2048/199722182_954367632023641_7813126662179533781_n.png?_nc_cat=107&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGGkt8kSyv2qwrw2Trcxn3vOjNFImoHrm46M0UiageubvsfGYTC-eEvscl-iqU6QO-FkkwsWriaNc7x748GVZAa&_nc_ohc=Pbd0Ot7pxaAAX8aQtZA&_nc_ht=scontent.fcgk18-2.fna&tp=30&oh=65947a31cc9efa1b6bc7ae725c2f2b92&oe=60CD1ABD)
