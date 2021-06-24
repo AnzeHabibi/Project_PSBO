@@ -123,7 +123,7 @@ Fungsi utama yang dikembangkan adalah pembuatan projek yang dibuat oleh pengguna
 4. ***Delete Project*** : Pengguna yang merupakan Project Manager dapat menghapus projeect selama project member belum di rekrut. 
 
 
-## Hasil Implementasi
+## 📋Hasil Implementasi
 ### Screenshot sistem
 ![Implementasi Sistem](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/p2048x2048/199722182_954367632023641_7813126662179533781_n.png?_nc_cat=107&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGGkt8kSyv2qwrw2Trcxn3vOjNFImoHrm46M0UiageubvsfGYTC-eEvscl-iqU6QO-FkkwsWriaNc7x748GVZAa&_nc_ohc=Pbd0Ot7pxaAAX8aQtZA&_nc_ht=scontent.fcgk18-2.fna&tp=30&oh=65947a31cc9efa1b6bc7ae725c2f2b92&oe=60CD1ABD)
 
@@ -133,7 +133,7 @@ https://github.com/AnzeHabibi/Project_PSBO
 ## ❔Saran untuk Pengembangan Selanjutnya
 Pengembangan selanjutnya akan dilakukan _maintenance_ sistem yang telah dibuat dan akan dievaluasi apakah sistem sudah berjalan sesuai kebutuhan pengguna atau belum. Jika belum memenuhi kebutuhan pengguna, sistem akan diperbaiki dan ditingkatkan pada bagian yang kurang. Namun jika sudah memenuhi kebutuhan pengguna, akan dibuat fitur baru yang bisa menambah kinerja sistem tersebut.
 
-## Developer dan Job Description
+## 👷Developer dan Job Description
 |No.|Nama|Job description|
 |--|--|--|
 |1.|**Muhammad Abiyyu Habibi** (G64180066)|_Frontend Developer_ dan _UI/UX Designer_|
