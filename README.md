@@ -20,21 +20,21 @@ Nomor Kelompok : **03**<br />
     </thead>
 </table align="center">
 
-## Deskripsi Aplikasi 
+## ✏️Deskripsi Aplikasi 
 Aplikasi **GoFind** merupakan aplikasi yang digunakan untuk mencari projek ataupun anggota tim untuk projeknya. Berawal dari kebutuhan mahasiswa khususnya mahasiswa IPB yang kesulitan untuk mencari partner dalam menjalankan projeknya. selain itu terdapat mahasiswa yang juga kesulitan mencari proyek yang sesuai untuk pengembangan dirinya. melalui aplikasi ini, diharapkan banyak mahasiswa terbantu untuk mencari dan mendapatkan projek atau partner tim yang sesuai dengan keinginannya masing-masing.
 
 Pada aplikasi ini, user bisa memperlihatkan track record serta keahlian yang mereka miliki untuk bisa ikut dalam sebuah proyek nyata. Selain itu, user juga bisa memasukan media sosial dan CV sehingga user lain bisa langsung melihat social media dan CV-nya secara langsung. User juga bisa membuat projek dengan memasukan judul, deskripsi, waktu pembukaan lowongan projek, dan foto untuk memperlihatkan informasi lengkap proyek. Selanjutnya, user juga bisa memilih orang yang sesuai dengan kriteria yang diinginkan untuk menjadi anggota tim projeknya dengan cara melihat role, specialist, social media, cv serta track record dari orang tersebut. User bisa membuat atau mengikuti proyek apapun tanpa terpaku dengan jurusan atau departemen tertentu. Namun user hanya dapat berada dalam satu projek dalam satu waktu. Dengan adanya solusi tersebut, diharapkan user dapat meningkatkan kualitas kemampuannya dan memperbanyak pengalaman mereka.
 
-## Analisis Pengguna
-### ***User Story***
+## 📔Analisis Pengguna
+### 👫***User Story***
 1. Sebagai Mahasiswa IPB yang sedang mencari rekan untuk mengikuti lomba/projek, saya ingin menemukan partner yang sesuai dengan keahlian yang saya butuhkan untuk membantu saya dalam mengerjakan proyek.
 2. Sebagai Mahasiswa IPB yang memiliki keahlian yang ingin disalurkan, saya ingin menemukan lomba atau projek nyata yang cocok dengan keahlian yang saya miliki saat ini.
 
-## Spesifikasi Teknis Lingkungan Pengembangan
-### Software
+## 💻Spesifikasi Teknis Lingkungan Pengembangan
+### 📁Software
 ![software pengembangan GoFind](https://scontent-sin6-2.xx.fbcdn.net/v/t1.15752-9/192647828_350186593197721_8066950454003592681_n.png?_nc_cat=103&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGPTj6WD-XV0RKsPUJMasCGflueE4t0Zox-W54Ti3RmjN9r6CIfGDZwGMP0VwrIFcGp4dxjWdmoaDVaj6lGe7ds&_nc_ohc=-a1SxhVI6aIAX8BoG24&_nc_ht=scontent-sin6-2.xx&oh=3fe1a5df7e2c008ef12b0db9730b4c9c&oe=60DBF9B2)
 
-### Hardware
+### 📱Hardware
 -   **Nama :**  Samsung Galaxy A11
 -   **Berat :** 177 gram (g)
 -   **Material :**  Depan kaca, bingkai dan belakang plastik
@@ -52,20 +52,22 @@ Pada aplikasi ini, user bisa memperlihatkan track record serta keahlian yang mer
 -   **Sensor :** Sidik jari (di belakang),  _accelerometer, proximity_
 -   **Baterai :**  Li-Po 4000 mAh, non-removable, Fast charging 15W
 
-### TechStack
+### 💾TechStack
 Aplikasi **GoFind** adalah aplikasi yang berbasis Mobile yang dibuat menggunakan framework Flutter SDK (_Software Development Kit_) yang dikembangkan oleh Google untuk membuat aplikasi yang bagus dan bisa berjalan pada berbagai platform. Backend untuk aplikasi ini menggunakan MongoDB, Express, ODM Mongoose, dan Thunder Client.
 
 **Framework Frontend** : Flutter SDK<br />
 **Framework Backend** : MongoDB, Express, ODM Mongoose, dan Thunder Client<br />
 **Output** : Mobile Application<br />
 
-## Konsep OOP yang Digunakan
-* #### Mendefenisikan Kelas
-* #### Variabel Instans (attribut)
-* #### Method Getter & Setter
-* #### Penamaan Konstruktor
+## 🔑Konsep OOP yang Digunakan
+* #### Encapsulation
+Encapsulation adalah membungkus class dan menjaga apa apa saja yang ada di dalam class tersebut, baik method ataupun atribut, agar tidak dapat di akses oleh class lainnya. Untuk menjaga hal tersebut dalam Encapsulation dikenal nama Hak Akses Modifier yang terdiri dari : Public, Private, dan Protected.
+* #### Inheritance
+Inheritance adalah konsep OOP dimana sebuah class dapat menurunkan property dan method yang dimilikinya kepada class lain. Konsep inheritance dipakai untuk memanfaatkan fitur code reuse, yakni menghindari terjadinya duplikasi kode program.
+* #### Abstraction
+Abstraction adalah proses untuk menyembunyikan detail implementasi dari user sehingga hanya sisi fungsionalitas saja yang ditampilkan, atau dengan kata lain user akan menerima informasi mengenai apa yang dapat dilakukan oleh suatu objek namun user tidak akan mengetahui bagaimana objek itu melakukannya.
 
-## Tipe Desain Pengembangan yang Digunakan (Pattern/Anti Pattern)
+## 🎨Tipe Desain Pengembangan yang Digunakan (Pattern/Anti Pattern)
 Tipe desain pengembangan yang digunakan adalah metode waterfall. Pengembangan sistem aplikasi dengan metode waterfall yang terdiri dari tahap _Requirement, Design System, Coding, Integration_, dan _Operation and Maintenance_. Disebut sebagai metode waterfall dikarenakan tahapan dan juga urutan dari metode yang dilakukan merupakan jenis metode yang berurutan dan berkelanjutan, seperti layaknya sebuah air terjun.
 
 Kelebihan dari metode Waterfall adalah :
@@ -96,7 +98,7 @@ Tahapan penetapan dapat dikatakan sebagai tahap final dalam pembuatan suatu sist
 Sistem perangkat lunak yang sudah diintegrasikan kepada user, tentunya akan mengalami perubahan. Perubahan tersebut terjadi sebab sistem dapat mengalami kesalahan dan harus menyesuaikan dengan lingkungan baru. Perubahan dapat juga terjadi terhadap sistem yang disebabkan oleh kebutuhan pelanggan akan perkembangan fungsional.
 
 
-## Hasil dan Pembahasan
+## 📈Hasil dan Pembahasan
 
 ### Use case diagram
 ![Use Case Diagram](https://scontent-sin6-3.xx.fbcdn.net/v/t1.15752-9/190739721_500564834426213_8908409490674910310_n.png?_nc_cat=106&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeG1b7Ol2W72ozxDSQdW0s43B8GS4hoal00HwZLiGhqXTaAzrLjC4f_FrAV_SgHMV46s2O0WihfEqCItYGyBdC-B&_nc_ohc=2zKuDMgqUJwAX_y2jNv&_nc_ht=scontent-sin6-3.xx&oh=05c9da7e3ee4d6872ba971d345768edc&oe=60DA8E0D)
@@ -128,7 +130,7 @@ Fungsi utama yang dikembangkan adalah pembuatan projek yang dibuat oleh pengguna
 ### Link Aplikasi
 https://github.com/AnzeHabibi/Project_PSBO
 
-## Saran untuk Pengembangan Selanjutnya
+## ❔Saran untuk Pengembangan Selanjutnya
 Pengembangan selanjutnya akan dilakukan _maintenance_ sistem yang telah dibuat dan akan dievaluasi apakah sistem sudah berjalan sesuai kebutuhan pengguna atau belum. Jika belum memenuhi kebutuhan pengguna, sistem akan diperbaiki dan ditingkatkan pada bagian yang kurang. Namun jika sudah memenuhi kebutuhan pengguna, akan dibuat fitur baru yang bisa menambah kinerja sistem tersebut.
 
 ## Developer dan Job Description
