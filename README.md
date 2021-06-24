@@ -71,34 +71,17 @@ Kelas merupakan deskripsi abstrak informasi dan tingkah laku dari sekumpulan dat
 Polimorfisme merupakan kemampuan objekobjek yang berbeda kelas namun terkait dalam pewarisan untuk merespon secara berbeda terhadap suatu pesan yang sama. Polimorfisme juga dapat dikatakan kemampuan sebuah objek untuk memutuskan method mana yang akan diterapkan padanya, tergantung letak objek tersebut pada jenjang pewarisan. Method overriding. Method name overloading.
 
 ## 🎨Tipe Desain Pengembangan yang Digunakan (Pattern/Anti Pattern)
-Tipe desain pengembangan yang digunakan adalah metode waterfall. Pengembangan sistem aplikasi dengan metode waterfall yang terdiri dari tahap _Requirement, Design System, Coding, Integration_, dan _Operation and Maintenance_. Disebut sebagai metode waterfall dikarenakan tahapan dan juga urutan dari metode yang dilakukan merupakan jenis metode yang berurutan dan berkelanjutan, seperti layaknya sebuah air terjun.
+### MVVM
+Dilihat dari definisinya MVVM merupakan singkatan dari tiga kata yaitu Model, View, dan View Model. Konsep MVVM adalah membangun model tampilan yang dapat merepresentasikan data melalui tampilan. Jadi dengan melihat diagram alir MVVM, kita bisa melihat bahwa model tampilan menempati posisi sentral yang mengirim dan menerima data dari model dan memberikan data ke tampilan, juga mengamati perubahan data yang terjadi pada tampilan dan merespons sesuai dengan menggunakan model ke tampilan. Untuk menulis basis kode yang dapat disesuaikan, pengembang aplikasi perlu membangun lapisan Model Tampilan yang dapat digunakan oleh beberapa 'Tampilan'. Sekarang kita akan melihat masing-masing komponen secara individual.
 
-Kelebihan dari metode Waterfall adalah :
-1.  Memiliki proses yang terurut
-2.  Proses yang dilakukan tidak tumpah tindih
-3.  Setiap proses memiliki spesifikasinya sendiri, sehingga sebuah sistem dapat dikembangkan sesuai dengan apa yang dikehendaki.
+#### Model 
+Model dalam pola desain MVVM mewakili data aktual (real-time) yang akan digunakan dalam pengembangan aplikasi. misalnya, kita dapat memahami dengan bantuan skenario real-time bank di mana elemen ini akan menjadi nomor rekening, memiliki nama dan alamat seseorang. Untuk pemahaman yang lebih baik, Anda dapat mengatakan bahwa Model hanya dapat mencerminkan data aktual, bukan karakteristik atau fitur apa pun yang terkait dengan aplikasi. Ini berarti Anda tidak dapat memanipulasi cara data akan direpresentasikan atau diformat. Setiap item dalam kumpulan data akan mewakili modelnya sendiri saat data diambil. Terutama Model disimpan jauh dari bagian logika untuk kode yang rapi tetapi kadang-kadang mencakup logika validasi juga.
 
-Metode pengembangan waterfall memiliki beberapa tahapan yang berurut yaitu:
+#### View 
+Tampilan dalam pola desain MVVM mewakili Antarmuka yang dapat digunakan pengguna untuk berinteraksi dengan aplikasi. Elemen ini memanfaatkan sekumpulan library untuk menyajikan data secara lebih akurat dan tepat. Elemen ini juga memiliki properti untuk memanfaatkan perilaku yang terkait dengan Model, seperti mengidentifikasi dan bertindak sesuai dengan input pengguna. View dapat menangani tindakan yang dilakukan oleh pengguna, yang dapat dimanipulasi oleh fungsionalitas Model.
 
-**1.  Requirement Analysis**
-
-Tahap dimana kita harus memahami perangkat lunak yang diharapkan oleh pengguna dan batasan software yang ingin kita rancang Informasi ini biasanya dapat diperoleh melalui wawancara, diskusi atau survei langsung. Informasi dianalisis untuk mendapatkan data yang dibutuhkan oleh pengguna.
-
-**2.  Design System**
-
-Proses desain akan diterjemahkan syarat kebutuhan ke sebuah perancangan perangkat lunak yang dapat diperkirakan sebelum dibuat koding. Proses ini berfokus pada struktur data, rancangan perangkat lunak, representasi interface, dan detail (algoritma) prosedural. Tahapan ini akan dihasilkan dokumen yang disebut software requirement. Dokumen inilah yang akan digunakan untuk melakukan aktivitas pembuatan sistemnya.
-
-**3.  Coding**
-
-Coding merupakan penerjemahan desain dalam bahasa yang dapat dikenali oleh komputer. Tahapan ini merupakan tahapan nyata dalam mengerjakan suatu sistem. Setelah pengkodean selesai selanjutnya akan dilakukan testing terhadap sistem yang telah dibuat tadi. Testing dilakukan bertujuan menemukan kesalahan-kesalahan terhadap sistem tersebut kemudian dapat dilakukannya sebuah perbaikan.
-
-**4.  Integration**
-
-Tahapan penetapan dapat dikatakan sebagai tahap final dalam pembuatan suatu sistem. Setelah dilakukan tiga tahap metode sebelumnya, sistem ini siap digunakan oleh user.
-
-**5.  Operation & Maintenance**
-
-Sistem perangkat lunak yang sudah diintegrasikan kepada user, tentunya akan mengalami perubahan. Perubahan tersebut terjadi sebab sistem dapat mengalami kesalahan dan harus menyesuaikan dengan lingkungan baru. Perubahan dapat juga terjadi terhadap sistem yang disebabkan oleh kebutuhan pelanggan akan perkembangan fungsional.
+#### ViewModel
+Elemen paling penting dari arsitektur MVVM adalah ViewModel, yang menyajikan bagian View secara terpisah dari Model. Elemen ini membuat Model menyimpan data aktual, dan bagian View menyimpan data yang diformat atau diperbarui sambil menjaga pengontrol sebagai antarmuka di antara mereka.Sebagai antarmuka, pengontrol memiliki semua catatan input pengguna dalam tampilan untuk menempatkannya dalam model. Atau, dapat berinteraksi dengan fungsi Tampilan untuk mengambil data dari Model, lalu menerjemahkan properti untuk menggabungkannya dengan Tampilan. ViewModel juga memiliki akses ke metode, panggilan fungsi, dan faktor lain yang dapat membantu mempertahankan status sebenarnya dari View. Selain itu, akses ini juga memungkinkan ViewModel untuk memanipulasi atau memoderasi Model sesuai dengan perilaku dalam tampilan saat memicu prosesnya. Saat membangun pola desain MVVM, elemen-elemen ini memainkan peran penting. Karena properti mereka mencakup sinkronisasi yang konsisten satu sama lain, pengguna dapat memiliki pengaruh untuk berinteraksi dengan aplikasi dengan lancar.
 
 
 ## 📈Hasil dan Pembahasan
