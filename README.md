@@ -128,7 +128,7 @@ Fungsi utama yang dikembangkan adalah pembuatan projek yang dibuat oleh pengguna
 
 ## 📋Hasil Implementasi
 ### Pemakaian JWT
-Strukur yang kami gunakan dibagi menjadi tiga bagian. Yang pertama ada Header dimana tipe JWT didefinisikan dan kami menggunakan hash hs256. Yang kedua ada Payload dimana ada loggedIn. Yang ketiga ada signatur yang berupa pengimplementasian header dan payload menggunakan HMAC-SHA256.
+Strukur yang kami gunakan dibagi menjadi tiga bagian. Yang pertama ada Header dimana tipe JWT didefinisikan dan kami menggunakan hash hs256. Yang kedua ada Payload dimana ada loggedIn dan juga iat . Yang ketiga ada signatur yang berupa pengimplementasian header dan payload menggunakan HMAC-SHA256. JWT Identifier tidak diacak dan static disimpan di env. JWt akan expired setelah 12 jam. 
 
 Foto Stuktur
 
