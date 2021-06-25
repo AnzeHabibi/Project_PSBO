@@ -1,6 +1,9 @@
 part of 'widget.dart';
 
 class ProfileCard extends StatelessWidget {
+  final data;
+
+  const ProfileCard({Key key, this.data}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -35,20 +38,21 @@ class ProfileCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(100),
                           border: Border.all(color: Colors.white, width: 2),
                           image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://images.unsplash.com/photo-1586822339087-80cc375ac083?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"),
+                              image: NetworkImage(data['photo'] != ''
+                                  ? data['photo']
+                                  : "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png"),
                               fit: BoxFit.cover)),
                     ),
                     Column(
                       children: [
                         SizedBox(height: 100),
                         Text(
-                          "Ojan",
+                          data['name'],
                           style: blueFontStyle1.copyWith(fontSize: 24),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          "ojan.mantab@mail.com",
+                          data['email'],
                           style: blackFontStyle3.copyWith(
                               fontSize: 16, color: Colors.grey),
                         ),
@@ -89,7 +93,7 @@ class ProfileCard extends StatelessWidget {
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  "UI/UX Design",
+                                  data['speciality'],
                                   style: blackFontStyle3.copyWith(
                                       fontSize: 12,
                                       color: mainColor,

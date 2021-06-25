@@ -14,6 +14,7 @@ class _DetailPageState extends DetailProjectController {
   var dataPhotoProject;
   DateTime startDate;
   DateTime now = DateTime.now();
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -47,8 +48,11 @@ class _DetailPageState extends DetailProjectController {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(dataProject['project']['photos'].length != 0 ?
-                                   dataProject['project']['photos'][0]['photo']
+                              image: NetworkImage(dataProject['project']
+                                              ['photos']
+                                          .length !=
+                                      0
+                                  ? dataProject['project']['photos'][0]['photo']
                                   : "https://images.unsplash.com/photo-1553267751-1c148a7280a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"),
                               fit: BoxFit.cover)),
                     ),
@@ -188,35 +192,35 @@ class _DetailPageState extends DetailProjectController {
                               SizedBox(height: 40),
                               dataProject['typeMember'] == 3
                                   ? (startDate.isAfter(now))
-                                      ? btnParticipant()
-                                      : btnMember()
+                                      ? btnParticipant(() => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => RegistrantPage(
+                                                  type: 1, id: widget.id))))
+                                      : btnMember(() => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegistrantPage(
+                                                      type: 2, id: widget.id))))
                                   : dataProject['typeMember'] == 2
-                                      ? btnMember()
+                                      ? btnMember(() => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegistrantPage(
+                                                      type: 2, id: widget.id))))
                                       : dataProject['typeMember'] == 1
-                                          ? btnAssigned()
-                                          : btnAssigned(),
-                              // Align(
-                              //   alignment: Alignment.bottomCenter,
-                              //   child: Container(
-                              //     margin: EdgeInsets.symmetric(horizontal: 16),
-                              //     width: MediaQuery.of(context).size.width -
-                              //         (2 * 16),
-                              //     height: 50,
-                              //     child: RaisedButton(
-                              //       onPressed: () {
-                              //         Get.to(RegistrantPage());
-                              //       },
-                              //       child: Text("Join Project",
-                              //           style: whiteFontStyle.copyWith(
-                              //             fontSize: 18,
-                              //           )),
-                              //       color: mainColor,
-                              //       shape: RoundedRectangleBorder(
-                              //           borderRadius:
-                              //               BorderRadius.circular(18)),
-                              //     ),
-                              //   ),
-                              // ),
+                                          ? btnParticipant(() => Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => RegistrantPage(type: 1, id: widget.id))))
+                                          : btnAssign(() {
+                                              assignProject(widget.id);
+                                              initState();
+                                              setState(() {
+                                                isLoadingFalse();
+                                              });
+                                            }),
                               SizedBox(height: 40),
                             ],
                           ),
@@ -296,7 +300,7 @@ Widget photoWidget(String link) {
   );
 }
 
-Widget btnAssign() {
+Widget btnAssign(final void Function() onPressed) {
   return Align(
     alignment: FractionalOffset.bottomCenter,
     child: Padding(
@@ -316,7 +320,9 @@ Widget btnAssign() {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          onPressed();
+        },
         color: Color(0xFF1D2A64),
       ),
     ),
@@ -350,7 +356,7 @@ Widget btnAssigned() {
   );
 }
 
-Widget btnMember() {
+Widget btnMember(final void Function() onPressed) {
   return Align(
     alignment: FractionalOffset.bottomCenter,
     child: Padding(
@@ -370,14 +376,16 @@ Widget btnMember() {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          onPressed();
+        },
         color: Color(0xFF1DAD2B),
       ),
     ),
   );
 }
 
-Widget btnParticipant() {
+Widget btnParticipant(final void Function() onPressed) {
   return Align(
     alignment: FractionalOffset.bottomCenter,
     child: Padding(
@@ -397,8 +405,10 @@ Widget btnParticipant() {
             ),
           ),
         ),
-        onPressed: () {},
-        color: Color(0xFF696969),
+        onPressed: () {
+          onPressed();
+        },
+        color: Color(0xFF1D2A64),
       ),
     ),
   );

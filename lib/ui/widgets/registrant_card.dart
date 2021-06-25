@@ -1,10 +1,9 @@
 part of 'widget.dart';
 
 class RegistrantCard extends StatelessWidget {
-  final String name, email, role, specialist, photo;
+  final String name, email, photo;
 
-  RegistrantCard(
-      {this.name, this.email, this.role, this.specialist, this.photo});
+  RegistrantCard({this.name, this.email, this.photo});
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -79,47 +78,47 @@ class RegistrantCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Column(
-                              children: [
-                                Text(
-                                  "Role",
-                                  style: blueFontStyle1.copyWith(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w300),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  this.role,
-                                  style: blackFontStyle3.copyWith(
-                                      fontSize: 12,
-                                      color: mainColor,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              height: 24,
-                              width: 1,
-                              color: Color(0xffC9CBD3),
-                            ),
-                            Column(
-                              children: [
-                                Text(
-                                  "Specialist",
-                                  style: blueFontStyle1.copyWith(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w300),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  this.specialist,
-                                  style: blackFontStyle3.copyWith(
-                                      fontSize: 12,
-                                      color: mainColor,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ],
-                            )
+                            // Column(
+                            //   children: [
+                            //     Text(
+                            //       "Role",
+                            //       style: blueFontStyle1.copyWith(
+                            //           fontSize: 12,
+                            //           fontWeight: FontWeight.w300),
+                            //     ),
+                            //     SizedBox(height: 8),
+                            //     // Text(
+                            //     //   this.role,
+                            //     //   style: blackFontStyle3.copyWith(
+                            //     //       fontSize: 12,
+                            //     //       color: mainColor,
+                            //     //       fontWeight: FontWeight.w700),
+                            //     // ),
+                            //   ],
+                            // ),
+                            // Container(
+                            //   height: 24,
+                            //   width: 1,
+                            //   color: Color(0xffC9CBD3),
+                            // ),
+                            // Column(
+                            //   children: [
+                            //     Text(
+                            //       "Specialist",
+                            //       style: blueFontStyle1.copyWith(
+                            //           fontSize: 12,
+                            //           fontWeight: FontWeight.w300),
+                            //     ),
+                            //     SizedBox(height: 8),
+                            //     // Text(
+                            //     //   this.specialist,
+                            //     //   style: blackFontStyle3.copyWith(
+                            //     //       fontSize: 12,
+                            //     //       color: mainColor,
+                            //     //       fontWeight: FontWeight.w700),
+                            //     // ),
+                            //   ],
+                            // )
                           ],
                         ),
                         SizedBox(height: 32),

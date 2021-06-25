@@ -2,9 +2,9 @@ part of 'widget.dart';
 
 class ParticipantList extends StatelessWidget {
   final Participant participant;
+  final Function acceptRequest;
 
-  ParticipantList(this.participant);
-  @override
+  ParticipantList(this.participant, this.acceptRequest);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,40 +40,45 @@ class ParticipantList extends StatelessWidget {
                         fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 6),
-                  Text(
-                    participant.roleParticipant,
-                    style:
-                        blueFontStyle3.copyWith(fontSize: 12, color: greyColor),
-                  )
                 ],
               ),
             ],
           ),
-          Container(
-            height: 35,
-            width: 120,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(18)),
-            child: RaisedButton(
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) => CustomDialog(
-                          name: participant.nameParticipant,
-                          email: participant.emailParticipant,
-                          role: participant.roleParticipant,
-                          specialist: participant.specialistParticipant,
-                          photo: participant.photoParticipant,
-                        ));
-              },
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(18))),
-              color: Color(0xff236AFF),
-              child: Text(
-                "Edit Recruitment",
-                style: whiteFontStyle.copyWith(fontSize: 10),
-              ),
-            ),
-          ),
+          participant.accepted
+              ? Container(
+                  height: 35,
+                  width: 120,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(18)),
+                  child: RaisedButton(
+                    onPressed: null,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(18))),
+                    color: Color(0xff236AFF),
+                    child: Text(
+                      "Accepted",
+                      style: whiteFontStyle.copyWith(fontSize: 10),
+                    ),
+                  ),
+                )
+              : Container(
+                  height: 35,
+                  width: 120,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(18)),
+                  child: RaisedButton(
+                    onPressed: () {
+                      acceptRequest();
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(18))),
+                    color: Color(0xff236AFF),
+                    child: Text(
+                      "Accept Participant",
+                      style: whiteFontStyle.copyWith(fontSize: 10),
+                    ),
+                  ),
+                ),
         ],
       ),
     );
@@ -103,8 +108,6 @@ class CustomDialog extends StatelessWidget {
           child: RegistrantCard(
             name: this.name,
             email: this.email,
-            role: this.role,
-            specialist: this.specialist,
             photo: this.photo,
           ))
     ]);

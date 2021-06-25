@@ -1,6 +1,10 @@
 part of 'pages.dart';
 
 class ProfilePage extends StatefulWidget {
+  final data;
+
+  const ProfilePage({Key key, this.data}) : super(key: key);
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -18,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(RegistrantPage());
+                    Navigator.pop(context);
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 16),
@@ -48,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Column(
                 children: [
                   SizedBox(height: 56),
-                  ProfileCard(),
+                  ProfileCard(data: widget.data),
                   SizedBox(
                     height: 24,
                   ),
@@ -58,44 +62,44 @@ class _ProfilePageState extends State<ProfilePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text("Last Project",
-                            style: blueFontStyle2.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: mainColor)),
-                        Text(
-                          "see all",
-                          style: blueFontStyle2.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w200,
-                              color: mainColor),
-                        ),
+                        // Text("Last Project",
+                        //     style: blueFontStyle2.copyWith(
+                        //         fontSize: 18,
+                        //         fontWeight: FontWeight.w600,
+                        //         color: mainColor)),
+                        // Text(
+                        //   "see all",
+                        //   style: blueFontStyle2.copyWith(
+                        //       fontSize: 12,
+                        //       fontWeight: FontWeight.w200,
+                        //       color: mainColor),
+                        // ),
                       ],
                     ),
                   ),
-                  Container(
-                      height: 188,
-                      width: double.infinity,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          GestureDetector(
-                            onTap: () {},
-                            child: Row(
-                              children: mockMyProject
-                                  .map((e) => Padding(
-                                        padding: EdgeInsets.only(
-                                            left: (e == mockMyProject.first)
-                                                ? 16
-                                                : 0,
-                                            right: 16),
-                                        child: MyProjectCard(e),
-                                      ))
-                                  .toList(),
-                            ),
-                          )
-                        ],
-                      )),
+                  // Container(
+                  //     height: 188,
+                  //     width: double.infinity,
+                  //     child: ListView(
+                  //       scrollDirection: Axis.horizontal,
+                  //       children: [
+                  //         GestureDetector(
+                  //           onTap: () {},
+                  //           child: Row(
+                  //             children: mockMyProject
+                  //                 .map((e) => Padding(
+                  //                       padding: EdgeInsets.only(
+                  //                           left: (e == mockMyProject.first)
+                  //                               ? 16
+                  //                               : 0,
+                  //                           right: 16),
+                  //                       child: MyProjectCard(e),
+                  //                     ))
+                  //                 .toList(),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     )),
                   SizedBox(
                     height: 24,
                   ),

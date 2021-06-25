@@ -10,18 +10,6 @@ class _MyProfilePageState extends ShowProfileController {
   void initState() {
     WidgetsBinding.instance
         .addPostFrameCallback((_) => getMyProfile().then((response) {
-              // response.map((e) {
-              //   print('aaaasss' + e);
-              //   setState(() => MyProfile(
-              //       name: e['name'],
-              //       mail: e['email'],
-              //       photo: e['projectManager']['photo'] != ''
-              //           ? e['projectManager']['photo']
-              //           : "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png",
-              //       specialist: "UI/UX Design",
-              //       instagram: "",
-              //       whatsapp: ""));
-              // });
               setState(() {
                 mockMyProfile = [];
                 var e = response['user'];
