@@ -6,13 +6,14 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePageState extends ShowProfileController {
+  var e;
   @override
   void initState() {
     WidgetsBinding.instance
         .addPostFrameCallback((_) => getMyProfile().then((response) {
               setState(() {
                 mockMyProfile = [];
-                var e = response['user'];
+                e = response['user'];
                 var tile = mockMyProfile.firstWhere(
                     (item) => item.id == e['id'],
                     orElse: () => null);
@@ -89,6 +90,32 @@ class _MyProfilePageState extends ShowProfileController {
                                 SizedBox(width: 8),
                                 Text("Back", style: blueFontStyle2),
                               ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 24),
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.to(SignUpPage(data: e));
+                            },
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                        spreadRadius: 3,
+                                        blurRadius: 15,
+                                        color: Colors.black12)
+                                  ],
+                                  image: DecorationImage(
+                                      image: AssetImage("assets/btn_edit.png"),
+                                      fit: BoxFit.cover)),
                             ),
                           ),
                         ),

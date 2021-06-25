@@ -6,6 +6,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends LoginController {
+  TextEditingController emailController = new TextEditingController();
+
   Widget build(BuildContext context) {
     return isLoading()
         ? Center(
@@ -119,5 +121,46 @@ class _SignInPageState extends LoginController {
               ),
             ),
           );
+  }
+
+  Widget _buildEmailTF() {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 0, 12),
+            child: Text("Email", style: blueFontStyle2),
+          ),
+          Container(
+            height: 45.0,
+            child: TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                fillColor: Colors.white,
+                errorText: _validateEmail ? 'Inputan tidak\'bisa kosong' : null,
+                hintText: "Example@sample.com",
+                hintStyle: TextStyle(
+                  color: Color(0xFFD2D9DF),
+                  fontSize: 12,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffD2D9DF), width: 1.5),
+                  borderRadius: const BorderRadius.all(
+                    const Radius.circular(30.0),
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xffD2D9DF), width: 1.5),
+                  borderRadius: const BorderRadius.all(
+                    const Radius.circular(30.0),
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
