@@ -28,7 +28,7 @@ abstract class MyProjectController extends State<MyProjectPage> {
     var token = sharedPreferences.getString('token');
     try {
       var response = await http.get(
-          "https://mamen-lancer.herokuapp.com/api/project/myproject?page=" +
+          "http://13.229.135.254:3001/api/project/myproject?page=" +
               page.toString(),
           headers: {
             'Authorization': 'Bearer $token',

@@ -9,7 +9,7 @@ class _MainPageState extends DashboardController {
   var name, photo;
   List<MyProject> FiveMyProject = [];
   List<NewProject> FiveNewProjects = [];
-  List<MyProject> FivePendingprojects = [];
+  List<PendingProject> FivePendingprojects = [];
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -74,7 +74,33 @@ class _MainPageState extends DashboardController {
             }
           }).toList();
           List<dynamic> FivePendingprojectsList = data["FivePendingprojects"];
-          print("Aaa" + fiveMyProjectList.length.toString());
+          FivePendingprojectsList.map((e) {
+            print("ini e nya" + e.toString());
+            var tile = FivePendingprojects.firstWhere((item) => item.id == e.id,
+                orElse: () => null);
+            if (tile != null)
+              setState(() => tile = PendingProject(
+                  id: e['idProject']['_id'],
+                  photoCreator: e['idProject']['projectManager']['photo'] != ''
+                      ? e['idProject']['projectManager']['photo']
+                      : "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png",
+                  name: e['idProject']['title'],
+                  description: e['idProject']['description'],
+                  start: "Deadline",
+                  date: e['idProject']['endDate']));
+            else {
+              FivePendingprojects.add(PendingProject(
+                  id: e['idProject']['_id'],
+                  photoCreator: e['idProject']['projectManager']['photo'] != ''
+                      ? e['idProject']['projectManager']['photo']
+                      : "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png",
+                  name: e['idProject']['title'],
+                  description: e['idProject']['description'],
+                  start: "Deadline",
+                  date: e['idProject']['endDate']));
+            }
+          }).toList();
+          print("Aaa" + FivePendingprojects.length.toString());
           isLoadingFalse();
         });
       });
@@ -203,17 +229,22 @@ class _MainPageState extends DashboardController {
                                       GestureDetector(
                                         onTap: () {},
                                         child: Row(
-                                          children:
-                                              FiveMyProject.map((e) => Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: (e ==
-                                                                FiveMyProject
-                                                                    .first)
-                                                            ? 16
-                                                            : 0,
-                                                        right: 16),
+                                          children: FiveMyProject.map((e) =>
+                                              Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: (e ==
+                                                              FiveMyProject
+                                                                  .first)
+                                                          ? 16
+                                                          : 0,
+                                                      right: 16),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      Get.to(
+                                                          DetailPage(id: e.id));
+                                                    },
                                                     child: MyProjectCard(e),
-                                                  )).toList(),
+                                                  ))).toList(),
                                         ),
                                       )
                                     ],
@@ -297,18 +328,18 @@ class _MainPageState extends DashboardController {
                                               fontSize: 18,
                                               fontWeight: FontWeight.w600,
                                               color: mainColor)),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Get.to(PendingProjectPage());
-                                        },
-                                        child: Text(
-                                          "see all",
-                                          style: blueFontStyle2.copyWith(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w200,
-                                              color: mainColor),
-                                        ),
-                                      ),
+                                      // GestureDetector(
+                                      //   onTap: () {
+                                      //     Get.to(PendingProjectPage());
+                                      //   },
+                                      //   child: Text(
+                                      //     "see all",
+                                      //     style: blueFontStyle2.copyWith(
+                                      //         fontSize: 12,
+                                      //         fontWeight: FontWeight.w200,
+                                      //         color: mainColor),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 ),
@@ -323,19 +354,23 @@ class _MainPageState extends DashboardController {
                                       GestureDetector(
                                         onTap: () {},
                                         child: Row(
-                                          children: mockPendingProject
-                                              .map((e) => Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: (e ==
-                                                                mockPendingProject
-                                                                    .first)
-                                                            ? 16
-                                                            : 0,
-                                                        right: 16),
+                                          children: FivePendingprojects.map(
+                                              (e) => Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: (e ==
+                                                              FivePendingprojects
+                                                                  .first)
+                                                          ? 16
+                                                          : 0,
+                                                      right: 16),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      Get.to(
+                                                          DetailPage(id: e.id));
+                                                    },
                                                     child:
                                                         PendingProjectCard(e),
-                                                  ))
-                                              .toList(),
+                                                  ))).toList(),
                                         ),
                                       )
                                     ],
