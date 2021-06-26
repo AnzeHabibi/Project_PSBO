@@ -71,17 +71,24 @@ Kelas merupakan deskripsi abstrak informasi dan tingkah laku dari sekumpulan dat
 Polimorfisme merupakan kemampuan objekobjek yang berbeda kelas namun terkait dalam pewarisan untuk merespon secara berbeda terhadap suatu pesan yang sama. Polimorfisme juga dapat dikatakan kemampuan sebuah objek untuk memutuskan method mana yang akan diterapkan padanya, tergantung letak objek tersebut pada jenjang pewarisan. Method overriding. Method name overloading.
 
 ## 🎨Tipe Desain Pengembangan yang Digunakan (Pattern/Anti Pattern)
-### MVVM
-Dilihat dari definisinya MVVM merupakan singkatan dari tiga kata yaitu Model, View, dan View Model. Konsep MVVM adalah membangun model tampilan yang dapat merepresentasikan data melalui tampilan. Jadi dengan melihat diagram alir MVVM, kita bisa melihat bahwa model tampilan menempati posisi sentral yang mengirim dan menerima data dari model dan memberikan data ke tampilan, juga mengamati perubahan data yang terjadi pada tampilan dan merespons sesuai dengan menggunakan model ke tampilan. Untuk menulis basis kode yang dapat disesuaikan, pengembang aplikasi perlu membangun lapisan Model Tampilan yang dapat digunakan oleh beberapa 'Tampilan'. Sekarang kita akan melihat masing-masing komponen secara individual.
+### MVC
+Design Pattern MVC merupakan singkatan dari Model, View, dan Controller. konsep MVC ini membangun tampilan (view), model (data/interaksi web service), dan controler (pemrosesan data sebelum ditampilkan) secara terpisah. pada konsep ini, user yang berinteraksi dengan tampilan mengirimkan request kepada controller untuk kemudian diproses pada model. model yang mendapat request dari controller akan menngirimkan data kembali kepada controller dan selanjutnya ditampilkan pada view. secara umum, konsep mvc dapat digambarkan sebagai berikut.
+
+![diagram MVC](https://user-images.githubusercontent.com/57734498/123505757-17060200-d68b-11eb-9b1d-1dafbf078527.png)
+
+penjelasan lebih detail mengenai ketiga bagian pada MVC dijelaskan pada poin poin berikut.
 
 #### Model 
-Model dalam pola desain MVVM mewakili data aktual (real-time) yang akan digunakan dalam pengembangan aplikasi. misalnya, kita dapat memahami dengan bantuan skenario real-time bank di mana elemen ini akan menjadi nomor rekening, memiliki nama dan alamat seseorang. Untuk pemahaman yang lebih baik, Anda dapat mengatakan bahwa Model hanya dapat mencerminkan data aktual, bukan karakteristik atau fitur apa pun yang terkait dengan aplikasi. Ini berarti Anda tidak dapat memanipulasi cara data akan direpresentasikan atau diformat. Setiap item dalam kumpulan data akan mewakili modelnya sendiri saat data diambil. Terutama Model disimpan jauh dari bagian logika untuk kode yang rapi tetapi kadang-kadang mencakup logika validasi juga.
+Model dalam pola desain MVC mewakili data aktual (real-time) yang akan digunakan dalam pengembangan aplikasi. misalnya, kita dapat memahami dengan bantuan skenario real-time bank di mana elemen ini akan menjadi nomor rekening, memiliki nama dan alamat seseorang. Untuk pemahaman yang lebih baik, Anda dapat mengatakan bahwa Model hanya dapat mencerminkan data aktual, bukan karakteristik atau fitur apa pun yang terkait dengan aplikasi. Ini berarti Anda tidak dapat memanipulasi cara data akan direpresentasikan atau diformat. Setiap item dalam kumpulan data akan mewakili modelnya sendiri saat data diambil. Terutama Model disimpan jauh dari bagian logika untuk kode yang rapi tetapi kadang-kadang mencakup logika validasi juga.
 
 #### View 
-Tampilan dalam pola desain MVVM mewakili Antarmuka yang dapat digunakan pengguna untuk berinteraksi dengan aplikasi. Elemen ini memanfaatkan sekumpulan library untuk menyajikan data secara lebih akurat dan tepat. Elemen ini juga memiliki properti untuk memanfaatkan perilaku yang terkait dengan Model, seperti mengidentifikasi dan bertindak sesuai dengan input pengguna. View dapat menangani tindakan yang dilakukan oleh pengguna, yang dapat dimanipulasi oleh fungsionalitas Model.
+View atau tampilan dalam pola desain MVC mewakili Antarmuka yang digunakan oleh pengguna untuk berinteraksi dengan aplikasi. Pada framework flutter, view merupakan bagian kode program dart yang berisi elemen-elemen tampilan aplikasi untuk selanjutnya diatur oleh controller. View bertugas menyajikan informasi (yang mudah dimengerti) kepada user sesuai dengan instruksi dari controller. Artinya bagian View ini tidak menerima instruksi langsung dari user dan juga tidak berhubungan langsung dengan model.
 
-#### ViewModel
-Elemen paling penting dari arsitektur MVVM adalah ViewModel, yang menyajikan bagian View secara terpisah dari Model. Elemen ini membuat Model menyimpan data aktual, dan bagian View menyimpan data yang diformat atau diperbarui sambil menjaga pengontrol sebagai antarmuka di antara mereka.Sebagai antarmuka, pengontrol memiliki semua catatan input pengguna dalam tampilan untuk menempatkannya dalam model. Atau, dapat berinteraksi dengan fungsi Tampilan untuk mengambil data dari Model, lalu menerjemahkan properti untuk menggabungkannya dengan Tampilan. ViewModel juga memiliki akses ke metode, panggilan fungsi, dan faktor lain yang dapat membantu mempertahankan status sebenarnya dari View. Selain itu, akses ini juga memungkinkan ViewModel untuk memanipulasi atau memoderasi Model sesuai dengan perilaku dalam tampilan saat memicu prosesnya. Saat membangun pola desain MVVM, elemen-elemen ini memainkan peran penting. Karena properti mereka mencakup sinkronisasi yang konsisten satu sama lain, pengguna dapat memiliki pengaruh untuk berinteraksi dengan aplikasi dengan lancar.
+#### Controller
+Controller merupakan elemen paling penting dari arsitektur MVC karena controller merupakan bagian yang menjembatani model dan view. Controller berisi perintah-perintah yang berfungsi untuk memproses suatu data dan kemudian menampilkannya pada bagian View. Controller juga merupakan bagian yang berfungsi menerima request dari user kemudian menentukan  apa yang akan diproses oleh aplikasi.
+
+![image](https://user-images.githubusercontent.com/57734498/123506309-bd530700-d68d-11eb-8932-08261fda9a76.png)
+
 
 
 ## 📈Hasil dan Pembahasan
