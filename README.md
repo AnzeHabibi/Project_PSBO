@@ -7,7 +7,7 @@ Nomor Kelompok : **03**<br />
 <table align="center">
     <thead>
         <tr>
-            <th align="center"><a href="#deskripsi-aplikasi">Deskripsi</a></th>
+            <th align="center"><a href="#%EF%B8%8Fdeskripsi-aplikasi">Deskripsi</a></th>
             <th align="center"><a href="#analisis-pengguna">Analisis Pengguna</a></th>
             <th align="center"><a href="#spesifikasi-teknis-lingkungan-pengembangan">Lingkungan</a></th>
             <th align="center"><a href="#konsep-oop-yang-digunakan">Konsep OOP</a></th>
