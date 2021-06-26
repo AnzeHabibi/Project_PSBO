@@ -31,6 +31,7 @@ abstract class DashboardController extends State<MainPage> {
         'Authorization': 'Bearer $token',
       });
       Map<String, dynamic> map = json.decode(response.body);
+      sharedPreferences.setString("id", map['user']['_id']);
       // List<dynamic> data = map["MyProjects"];
       //print(data[0]);
       // print(data.toString());

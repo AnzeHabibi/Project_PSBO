@@ -14,9 +14,11 @@ class _DetailPageState extends DetailProjectController {
   var dataPhotoProject;
   DateTime startDate;
   DateTime now = DateTime.now();
+  var id;
 
   @override
   void initState() {
+    getID();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       dataProject = getDetailProject(widget.id).then((data) {
         setState(() {
@@ -28,6 +30,12 @@ class _DetailPageState extends DetailProjectController {
       });
     });
     super.initState();
+  }
+
+  getID() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    id = sharedPreferences.getString('id');
+    print(id);
   }
 
   @override
@@ -195,8 +203,9 @@ class _DetailPageState extends DetailProjectController {
                                       ? btnParticipant(() => Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => RegistrantPage(
-                                                  type: 1, id: widget.id))))
+                                              builder: (context) =>
+                                                  RegistrantPage(
+                                                      type: 1, id: widget.id))))
                                       : btnMember(() => Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -211,9 +220,7 @@ class _DetailPageState extends DetailProjectController {
                                                   RegistrantPage(
                                                       type: 2, id: widget.id))))
                                       : dataProject['typeMember'] == 1
-                                          ? btnParticipant(() => Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => RegistrantPage(type: 1, id: widget.id))))
+                                          ? btnAssigned()
                                           : btnAssign(() {
                                               assignProject(widget.id);
                                               initState();
@@ -250,34 +257,37 @@ class _DetailPageState extends DetailProjectController {
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(EditProject(
-                              dataProject: dataProject['project'],
-                            ));
-                          },
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                      spreadRadius: 3,
-                                      blurRadius: 15,
-                                      color: Colors.black12)
-                                ],
-                                image: DecorationImage(
-                                    image: AssetImage("assets/btn_edit.png"),
-                                    fit: BoxFit.cover)),
-                          ),
-                        ),
-                      ),
-                    ),
+                    dataProject['project']['projectManager']['_id'] == id
+                        ? Align(
+                            alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 24),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.to(EditProject(
+                                    dataProject: dataProject['project'],
+                                  ));
+                                },
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                            spreadRadius: 3,
+                                            blurRadius: 15,
+                                            color: Colors.black12)
+                                      ],
+                                      image: DecorationImage(
+                                          image:
+                                              AssetImage("assets/btn_edit.png"),
+                                          fit: BoxFit.cover)),
+                                ),
+                              ),
+                            ),
+                          )
+                        : Container(),
                   ],
                 )),
           );

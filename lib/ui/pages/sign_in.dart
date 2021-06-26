@@ -75,45 +75,15 @@ class _SignInPageState extends LoginController {
                                     _validatePassword == false) {
                                   setState(() {
                                     isLoadingTrue();
+                                    signIn(emailController.text,
+                                        passwordController.text);
                                   });
-                                  signIn(emailController.text,
-                                      passwordController.text);
                                 }
                               },
                               color: Color(0xFF1D2A64),
                             ),
                           ),
                         ),
-                        // GestureDetector(
-                        //   onTap: () {
-                        //     Get.to(SignUpPage());
-                        //   },
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.all(24.0),
-                        //     child: Row(
-                        //       mainAxisAlignment: MainAxisAlignment.center,
-                        //       children: <Widget>[
-                        //         Text(
-                        //           "Don't have an account ? ",
-                        //           style: TextStyle(
-                        //               color: Color(0xFF424874),
-                        //               fontWeight: FontWeight.w400),
-                        //         ),
-                        //         GestureDetector(
-                        //           onTap: () {
-                        //             Get.to(SignUpPage());
-                        //           },
-                        //           child: Text(
-                        //             "Sign Up",
-                        //             style: TextStyle(
-                        //                 color: Color(0xFF424874),
-                        //                 fontWeight: FontWeight.w700),
-                        //           ),
-                        //         )
-                        //       ],
-                        //     ),
-                        //   ),
-                        // )
                       ],
                     ),
                   ),
@@ -122,6 +92,9 @@ class _SignInPageState extends LoginController {
             ),
           );
   }
+
+  bool _validateEmail = false;
+  bool _validatePassword = false;
 
   Widget _buildEmailTF() {
     return Container(

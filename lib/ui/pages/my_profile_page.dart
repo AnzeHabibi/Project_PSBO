@@ -199,7 +199,12 @@ class _MyProfilePageState extends ShowProfileController {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Get.to(SignInPage());
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SignInPage()),
+                                    (Route<dynamic> route) => false,
+                                  );
                                 },
                                 color: Color(0xFFD43F51),
                               ),

@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:project_psbo/ui/pages/pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:fluttertoast/fluttertoast.dart';
 
 abstract class LoginController extends State<SignInPage> {
   bool _isLoading = false;
@@ -27,6 +28,9 @@ abstract class LoginController extends State<SignInPage> {
     var jsonData;
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     try {
+      setState(() {
+        isLoadingTrue();
+      });
       var response = await http
           .post("http://13.229.135.254:3001/api/user/loginIPB", body: data);
       jsonData = json.decode(response.body);
