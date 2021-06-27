@@ -1,3 +1,4 @@
+![Logo GoFind](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/203442042_2993590060925314_8126001390419087873_n.png?_nc_cat=111&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeHIK5cF-KJl8E26z8dVD-7r2Ez1AEDM7XvYTPUAQMzte672HSY-Fu2QN7efyTs_Rlf6IPClSFOgoYe8LEmyiQ2h&_nc_ohc=aFpg-dWaGvcAX96sUD3&_nc_ht=scontent.fcgk18-2.fna&oh=ff476cfac967b9d51a17bb963db28831&oe=60DC906D)
 
 # Project_PSBO
 Nama Sistem : **GoFind**<br />
@@ -132,7 +133,7 @@ Berikut kode implementasi dari JWT pada sistem kami:
 ![Implementasi Sistem](https://scontent.fcgk18-2.fna.fbcdn.net/v/t1.15752-9/p2048x2048/199722182_954367632023641_7813126662179533781_n.png?_nc_cat=107&ccb=1-3&_nc_sid=ae9488&_nc_eui2=AeGGkt8kSyv2qwrw2Trcxn3vOjNFImoHrm46M0UiageubvsfGYTC-eEvscl-iqU6QO-FkkwsWriaNc7x748GVZAa&_nc_ohc=Pbd0Ot7pxaAAX8aQtZA&_nc_ht=scontent.fcgk18-2.fna&tp=30&oh=65947a31cc9efa1b6bc7ae725c2f2b92&oe=60CD1ABD)
 
 ### Link Aplikasi
-https://github.com/AnzeHabibi/Project_PSBO
+https://drive.google.com/drive/folders/1SNqctXH2PRrCQPqvLnMNAiohXspOU63Q?usp=sharing
 
 ## ❔Saran untuk Pengembangan Selanjutnya
 Pengembangan selanjutnya akan dilakukan _maintenance_ sistem yang telah dibuat dan akan dievaluasi apakah sistem sudah berjalan sesuai kebutuhan pengguna atau belum. Jika belum memenuhi kebutuhan pengguna, sistem akan diperbaiki dan ditingkatkan pada bagian yang kurang. Namun jika sudah memenuhi kebutuhan pengguna, akan dibuat fitur baru yang bisa menambah kinerja sistem tersebut.
